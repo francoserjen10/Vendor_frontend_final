@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "./globals.sass";
 
 export const metadata: Metadata = {
     title: "Vendor Frontend Final",
