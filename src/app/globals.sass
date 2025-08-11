@@ -1,6 +1,6 @@
-// Imports files
-@use "styles/variables" as variables
+@use "./styles/variables" as v
 @use "./styles/mixins" as mixins
+@use "./styles/login/login"
 
 // Global fonts and styles
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
@@ -39,6 +39,7 @@
 
 html, body
   font-family: Nunito Sans, sans-serif !important
+  background: v.$background-primary !important
 
 *
   box-sizing: border-box
