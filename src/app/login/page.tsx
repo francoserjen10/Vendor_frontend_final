@@ -8,10 +8,8 @@ export default function Login() {
             <div className="login__glow" aria-hidden />
 
             {/* Header superior */}
-            <header className="login__header">
-                <h1 className="login__title">
-                    LOG <span className="login__title--in">IN</span>
-                </h1>
+            <header className="login__header container">
+                <h1 className="login__title">LOG IN</h1>
                 <nav className="login__nav">
                     <Link className="login__nav-link login__nav-link--active" href="#">Home</Link>
                     <Link className="login__nav-link" href="#">About us</Link>
