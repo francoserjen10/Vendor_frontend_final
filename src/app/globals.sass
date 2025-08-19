@@ -1,9 +1,11 @@
 @use "./styles/variables" as v
 @use "./styles/mixins" as mixins
+@use "./styles/common/inputs"
 @use "./styles/login/login"
 
+@import 'bootstrap/dist/css/bootstrap.min.css'
+
 // Global fonts and styles
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
 @font-face
   font-family: 'Nunito Sans'
@@ -42,6 +44,11 @@ html, body
   background: v.$background-primary !important
   line-height: normal
   max-width: 100vw
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+:root
+  --max-width: 1920px
 
 *
   box-sizing: border-box
