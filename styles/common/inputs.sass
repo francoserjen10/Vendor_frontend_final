@@ -1,0 +1,22 @@
+@use "./styles/variables" as v
+
+.login .form-check-input
+  width: 22px
+  height: 22px
+  margin: 0
+  border: 1px solid v.$border
+  border-radius: 4px
+  background-color: v.$surface
+  background-position: center
+  background-repeat: no-repeat
+
+  &:focus
+      box-shadow: none !important
+      outline: none
+      border-color: v.$border
+
+  &:checked
+    border-color: #4880FF
+    background-color: #4880FF
+    background-image: url("/check.svg")
+ 

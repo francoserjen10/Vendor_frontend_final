@@ -6,27 +6,31 @@
   min-height: 100dvh
   background: v.$surface
   display: grid
-  //grid-template-rows: auto 1fr auto   
+  grid-template-rows: auto 1fr auto
+  align-content: start
 
 .container
   width: 100%
-  max-width: 1280px
+  max-width: min(1280px, 100vw - 64px)
   margin-inline: auto
 
-/* Header */
+/* === Header === */
 .login__header
   display: flex
   align-items: center
   justify-content: space-between
-  height: 65px
+  //height: 65px
   margin-top: 60px
   flex-wrap: nowrap
+
+.login__main
+  margin-top: clamp(56px, 12vh, 160px)
 
 .login__title
   margin: 0
   font-size: 48px
   font-weight: 700
-  line-height: 1
+  line-height: normal
   color: v.$primary 
   opacity: .6
   letter-spacing: 0
@@ -53,7 +57,209 @@
     text-decoration-thickness: 2px
     text-underline-offset: 8px
 
-/* Glow radial (Ellipse 309: #4880FF1A + blur 300px) */
+/* === Form === */
+.login__panel
+  width: 848px
+  margin: 0 auto
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 48px
+  position: relative
+
+.login__success
+  width: 100%
+  display: grid
+  gap: 16px
+  justify-items: center
+
+.login__intro
+  display: grid
+  justify-items: center
+  align-items: start
+  gap: 6px
+  width: 100%
+
+.login__intro > * 
+  max-width: 470px
+  width: fit-content
+  text-align: center
+  line-height: normal;
+
+.login__welcome
+  font-weight: 700
+  font-size: 36px
+  line-height: normal
+  color: v.$primary
+  margin: 0
+  white-space: nowrap
+
+.login__subtitle
+  font-weight: 300
+  font-size: 24px
+  line-height: normal
+  color: v.$text-dark
+  margin: 0
+
+.login__form
+  width: 100%
+  max-width: 416px
+  margin-inline: auto
+  display: grid
+  gap: 32px
+
+.login__fields
+  display: grid
+  gap: 24px
+
+.field
+  width: 100%
+  display: grid
+  gap: 16px
+
+  .field__control
+    position: relative
+    display: flex
+    align-items: center
+    gap: 16px 
+    height: 40px
+    padding: 9px 11px
+    border-radius: 8px
+    border: 1px solid v.$border
+    background: v.$surface
+    width: 100%
+
+    .field__input
+      flex: 1 1 auto
+      height: 100%
+      border: 0
+      outline: 0
+      font-size: 16px
+      font-weight: 300
+      font-family: 'Nunito Sans', sans-serif
+      line-height: normal
+      color: v.$text-dark
+      background: transparent
+      &::placeholder
+        color: v.$placeholder
+        font-weight: 300
+
+    .field__label
+      display: flex
+      gap: 10px
+      position: absolute
+      left: 11px
+      top: 0
+      transform: translateY(-50%)
+      padding: 0 6px
+      font-size: 12px
+      line-height: 16px
+      font-weight: 400
+      color: v.$text-dark
+      z-index: 1
+      &::after
+        content: ""
+        position: absolute
+        left: 0
+        right: 0
+        top: calc(50% - 1px)
+        height: 7px
+        background: v.$surface
+        z-index: 1
+      > label
+        position: relative
+        z-index: 2
+  
+.container__password
+  display: grid
+  width: 100%
+  gap: 8px
+
+.login__page__showpass__btn
+  border: none
+  background-color: #FFF
+
+.login__page__form__remember__password
+  display: flex
+  margin: 0
+  align-items: center
+  justify-content: space-between
+
+.login__checkbox__remember
+  margin: 0
+  display: flex
+  align-items: center
+  line-height: normal
+  gap: 8px
+  > p
+    margin: 0
+
+.forgot__password
+  color: v.$primary
+  font-weight: 400
+  font-size: 14px
+  line-height: auto
+  text-decoration: none
+
+.container__btn__login__link
+  display: flex
+  flex-direction: column
+  gap: 16px
+  margin: 0
+
+.login__btn
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 100%
+  height: 48px
+  gap: 10px
+  padding: 8px 32px
+  margin: 0
+  border: none
+  outline: none
+  border-radius: 6px
+  cursor: pointer
+  background: v.$primary
+  color: #FFF
+  font-size: 18px
+  font-weight: 500
+  box-shadow: 0px 4px 8px 0px rgba(72, 128, 255, 0.24) 
+
+.login__footer
+  display: flex
+  justify-content: center
+  gap: 6px
+.login__muted
+  font-size: 16px
+  font-weight: 300
+  color: #3E3A3B
+.link__register__new
+  color: v.$primary
+  font-weight: 400
+  font-size: 16px
+  line-height: auto
+  text-decoration: none
+
+.login__brand
+  display: flex
+  justify-content: center
+  text-align: center
+  padding: 0 127px
+  //margin: 24px 0 40px
+  margin-top: clamp(28px, 5vh, 56px)
+  font-size: 36px
+  font-family: "Nunito Sans", Helvetica
+  font-weight: 700
+  padding: 0 127px
+  strong
+    color: v.$primary
+    font-weight: 700
+  span
+    color: v.$text-dark
+    font-style: italic
+    font-weight: 200
+
 .login__glow
   position: absolute
   inset: 0
@@ -61,144 +267,53 @@
   &::before
     content: ""
     position: absolute
-    width: clamp(480px, 60vw, 700px)
-    height: clamp(480px, 60vw, 700px)
+    width: clamp(520px, 46vw, 780px)
+    height: clamp(520px, 46vw, 780px)
     left: 50%
     top: 36%
     transform: translate(-50%, -50%)
     border-radius: 50%
     background: rgba(72, 128, 255, 0.10)
-    filter: blur(150px) // 300px en Figma; 150–200px queda más performante
+    filter: blur(150px)
+    will-change: transform, filter
     z-index: 0
 
-/* Card centro */
-.login__card
-  margin-top: 40px
-  margin-bottom: 40px
-  padding: 32px 24px
-  background: #FFF
-  border: 1px solid v.$border // #D7D7D7
-  border-radius: 12px
-  box-shadow: 0 6px 18px rgba(17,24,39,.08)
-  position: relative
-  z-index: 1
-  display: grid
-  gap: 32px
-  max-width: 848px
+@media (min-width: 1440px)
+  .container
+    max-width: min(1360px, 100vw - 96px)
 
-.login__intro
-  display: grid
-  place-items: center
-  gap: 6px
-.login__welcome
-  font-weight: 700
-  font-size: 36px
-  line-height: 1
-  color: v.$primary
-.login__subtitle
-  font-weight: 300
-  font-size: 24px
-  line-height: 1
-  color: v.$text-dark
+@media (min-width: 1600px)
+  .container
+    max-width: min(1440px, 100vw - 128px)
 
-.login__form
-  width: 100%
-  max-width: 416px
-  margin-inline: auto
-  display: grid
-  gap: 16px
+  .login__main
+    margin-top: clamp(96px, 14vh, 220px)
 
-/* Input */
-.input
-  display: grid
-  gap: 6px
-  .input__label
-    font-size: 12px
-    font-weight: 400
-    color: v.$text-dark
-    width: max-content
-    padding-inline: 6px
-    background: #FFF
-    transform: translateY(9px)
-  .input__control
-    height: 40px
-    padding: 9px 11px
-    border-radius: 8px
-    border: 1px solid v.$border
-    background: #FFF
-    font-size: 16px
-    font-weight: 300
-    color: v.$text-dark
-    &::placeholder
-      color: v.$placeholder // #A9A9A9
-  .input__with-icon
-    display: flex
-    align-items: center
-    justify-content: space-between
-    gap: 8px
-    border: 1px solid v.$border
-    border-radius: 8px
-    padding: 0 11px
-    height: 40px
-    background: #FFF
-    .input__control
-      border: 0
-      padding: 0
-      height: 100%
+  .login__glow::before
+    width: clamp(620px, 42vw, 900px)
+    height: clamp(620px, 42vw, 900px)
+    filter: blur(200px)
+  
+  .login__brand
+    margin-block: clamp(32px, 4vh, 48px) clamp(64px, 8vh, 96px)
 
-/* Row remember/forgot */
-.login__row
-  display: flex
-  align-items: center
-  justify-content: space-between
-  gap: 12px
-  margin-top: 4px
+@media (min-width: 1920px)
+  .container
+    max-width: min(var(--max-width), 100vw - 160px)
 
-.checkbox
-  display: inline-flex
-  align-items: center
-  gap: 8px
-  input
-    width: 18px
-    height: 18px
-    border: 1px solid v.$border
-    border-radius: 4px
+  .login__main
+    margin-top: clamp(112px, 15vh, 240px)
+  
+  .login__glow::before
+    width: clamp(720px, 40vw, 1040px)
+    height: clamp(720px, 40vw, 1040px)
+    filter: blur(240px)
+  
+  .login__brand
+    margin-block: clamp(36px, 4vh, 56px) clamp(72px, 9vh, 120px)
 
-.login__link--primary
-  color: v.$primary
-  text-decoration: none
+  .login__welcome 
+    font-size: 42px
 
-/* Botón */
-.btn
-  display: inline-flex
-  align-items: center
-  justify-content: center
-  border: 0
-  cursor: pointer
-  &--primary
-    height: 48px
-    border-radius: 6px
-    padding: 8px 32px
-    background: v.$primary
-    color: #FFF
-    font-size: 18px
-    font-weight: 500
-    box-shadow: 0 4px 8px #4880FF3D
-    width: 100%
-
-/* Footer del form */
-.login__footer
-  display: flex
-  justify-content: center
-  gap: 6px
-  margin-top: 4px
-.login__muted
-  font-size: 16px
-  font-weight: 300
-  color: #3E3A3B
-
-/* Marca inferior */
-.login__brand
-  text-align: center
-  margin: 24px 0 40px
-  font-size: 28px
+  .field__label::after
+    top: calc(50% - 1.5px) !important
