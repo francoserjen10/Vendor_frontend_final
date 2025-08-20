@@ -1,9 +1,10 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import { pattern, required, run } from "../../../shared/validation";
 import { emailRegex, passwordRegex } from "../../../shared/constants";
+import { useSearchParams } from "next/navigation";
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -13,12 +14,113 @@ export default function Login() {
     const [emailError, setEmailError] = useState<string>("");
     const [passwordError, setPasswordError] = useState<string>("");
 
+    const [isEmailReadonly, setIsEmailReadonly] = useState<boolean>(false)
+    const [companies, setCompanies] = useState<Company[]>([]);
+    const [selectedCompany, setSelectedCompany] = useState<number | null>(null)
+    const [selectedLogo, setSelectedLogo] = useState<string>('') //Null
+    const [isCompanySelected, setIsCompanySelected] = useState<boolean>(false)
+
+    //==============================DB hardcodeada=====================================
+    const [db, setDb] = useState<Db | null>(null);
+
+    type Company = {
+        id: number;
+        company_name: string;
+        subdomain: string;
+        logo_url: string;
+    };
+
+    type Db = {
+        companies_by_email: Record<string, Company[]>;
+    };
+
+    useEffect(() => {
+        (async () => {
+            const res = await fetch("/mock/db.json", { cache: 'no-store' });
+            const json: Db = await res.json();
+            setDb(json);
+        })();
+    }, []);
+
+    useEffect(() => {
+        if (!db) return;
+        const key = email.trim().toLowerCase();
+        if (emailRegex.test(key)) {
+            setCompanies(db.companies_by_email[key] ?? []);
+        } else {
+            setCompanies([]);
+        }
+    }, [email, db])
+
+    //==============================Mock params Demo=====================================
+    const params = useSearchParams();
+
+    useEffect(() => {
+        const isDemo = params.get("demo") === "1";
+        if (!isDemo) return;
+
+        // Mock sencillo para demo
+        const mockEmail = "federico@example.com";
+        const fallbackCompanies: Company[] = [
+            { id: 144, company_name: "BoartPa", subdomain: "boartpa", logo_url: "https://placehold.co/140x140" },
+        ];
+        const demoCompanies =
+            db?.companies_by_email?.[mockEmail] ?? fallbackCompanies;
+
+        const p = params.get("panel") ?? "1";
+
+        if (p === "1") {
+            // Panel 1: login genérico
+            setIsCompanySelected(false);
+            setSelectedCompany(null);
+            setSelectedLogo("");
+            setEmail("");
+            setCompanies([]);
+        } else if (p === "2") {
+            // Panel 2: selección de compañía
+            setIsCompanySelected(true);
+            setSelectedCompany(null);
+            setSelectedLogo("");
+            setEmail(mockEmail);
+            setCompanies(demoCompanies);
+        } else if (p === "3") {
+            // Panel 3: login de compañía (con logo)
+            setIsCompanySelected(true);
+            setSelectedCompany(demoCompanies[0]?.id ?? null);
+            setSelectedLogo(demoCompanies[0]?.logo_url ?? "");
+            setEmail(mockEmail);
+            setCompanies(demoCompanies);
+        }
+    }, [params, db]);
+
+
     //==============================Visibility Password=====================================
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
 
-    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    const findCompanies = async (v: string) => {
+        setEmail(v)
+        setIsEmailReadonly(true)
+        // setError("")
+        // if (validateEmail(v)) {
+        //     const data = await getCompanies(v)
+        //     if (data.data) {
+        //         setCompanies(data.data)
+        //     } else {
+        //         setError(typeof data.message == "string" ? data.message : data.message.join("; "))
+        //     }
+        // }
+    }
+
+    const selectCompany = (company: number, logo: string) => {
+        // setError("")
+        setSelectedCompany(company)
+        setSelectedLogo(logo)
+        setIsCompanySelected(true)
+    }
+
+    const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         setEmailError("");
         setPasswordError("");
@@ -41,6 +143,25 @@ export default function Login() {
         console.log('Login OK');
     }
 
+    // Effect para verificar el dominio y redirigir o al login de la compania directamente o al login principal
+    // useEffect(() => {
+    //     const host = window.location.hostname;
+    //     const subdomain = host.split('.')[0];
+
+    //     if (subdomain != "auth" && subdomain != process.env.NEXT_PUBLIC_DOMAIN) {
+    //         // Le pega a la api
+    //         // getCompanyBySubdomain(subdomain).then(res => {
+    //         //     // Setea valores
+    //         //     if (res.data?.company_id) {
+    //         //         setSelectedCompany(res.data.company_id)
+    //         //         setSelectedLogo(res.data.logo_url)
+    //         //         setIsEmailReadonly(false)
+    //         //         setIsCompanySelected(true)
+    //         //     }
+    //         // })
+    //     }
+    // }, [])
+
     return (
         <div className="login">
             <div className="login__glow" aria-hidden />
@@ -57,103 +178,294 @@ export default function Login() {
 
             <section className="container">
                 <div className="login__main">
-                    <div className="login__panel">
-                        <div className="login__success">
-                            <div className="login__intro">
-                                <h2 className="login__welcome">Welcome back</h2>
-                                <h3 className="login__subtitle">
-                                    Log in to manage your rental shop with ease
-                                </h3>
-                            </div>
-                        </div>
-
-                        <form className="login__form" noValidate onSubmit={handleLogin}>
-                            <div className="login__fields">
-                                <div className="field">
-                                    <div className={`field__control ${emailError ? 'field__control--error' : ''}`}>
-                                        <div className={`field__label ${emailError ? 'field__label--error' : ''}`}>
-                                            <label htmlFor="email">Email</label>
-                                        </div>
-                                        <input
-                                            id="email"
-                                            type="email"
-                                            className="field__input"
-                                            placeholder="Enter Your Email"
-                                            value={email}
-                                            onChange={(e) => {
-                                                setEmail(e.target.value);
-                                                if (emailError) setEmailError("");
-                                            }}
-                                        // onChange real => findCompanies(e.target.value)}
-                                        />
+                    <div className={`login__panel ${isCompanySelected ? 'login__panel--with-brand' : ''}`}>
+                        {/* Si subdominio != a una compania */}
+                        {!isCompanySelected && (
+                            <>
+                                <div className="login__success">
+                                    <div className="login__intro">
+                                        <h2 className="login__welcome">Welcome back</h2>
+                                        <h3 className="login__subtitle">
+                                            Log in to manage your rental shop with ease
+                                        </h3>
                                     </div>
-                                    {emailError && (
-                                        <p className="field__error">{emailError}</p>
-                                    )}
                                 </div>
 
-                                <div className="container__password">
-                                    <div className="field">
-                                        <div className={`field__control ${passwordError ? 'field__control--error' : ''}`}>
-                                            <div className={`field__label ${passwordError ? 'field__label--error' : ''}`}>
-                                                <label htmlFor="password">Password</label>
+                                <Form className="login__form" noValidate>
+                                    <div className="login__fields">
+                                        <div className="field">
+                                            <div className={`field__control ${emailError ? 'field__control--error' : ''}`}>
+                                                <div className={`field__label ${emailError ? 'field__label--error' : ''}`}>
+                                                    <label htmlFor="email">Email</label>
+                                                </div>
+                                                <input
+                                                    id="email"
+                                                    type="email"
+                                                    className="field__input"
+                                                    placeholder="Enter Your Email"
+                                                    value={email}
+                                                    onChange={(e) => {
+                                                        setEmail(e.target.value);
+                                                        if (emailError) setEmailError("");
+                                                    }}
+                                                // onChange real => findCompanies(e.target.value)}
+                                                />
                                             </div>
-                                            <input
-                                                id="password"
-                                                type={showPassword ? 'text' : 'password'}
-                                                className="field__input"
-                                                placeholder="Enter Your Password"
-                                                value={password}
-                                                onChange={(e) => {
-                                                    setPassword(e.target.value);
-                                                    if (passwordError) setPasswordError("");
-                                                }}
-                                            />
-                                            <button
-                                                className="login__page__showpass__btn"
-                                                type="button"
-                                                onClick={togglePasswordVisibility}
-                                            >
-                                                {showPassword ? (
-                                                    <img src="./doNotShowPass.svg" alt="Hide password" />
-                                                ) : (
-                                                    <img src="./showPass.svg" alt="Show password" />
-                                                )}
-                                            </button>
+                                            {emailError && (
+                                                <p className="field__error">{emailError}</p>
+                                            )}
                                         </div>
-                                        {passwordError && (
-                                            <p className="field__error">{passwordError}</p>
+
+                                        <div className="container__password">
+                                            <div className="field">
+                                                <div className={`field__control ${passwordError ? 'field__control--error' : ''}`}>
+                                                    <div className={`field__label ${passwordError ? 'field__label--error' : ''}`}>
+                                                        <label htmlFor="password">Password</label>
+                                                    </div>
+                                                    <input
+                                                        id="password"
+                                                        type={showPassword ? 'text' : 'password'}
+                                                        className="field__input"
+                                                        placeholder="Enter Your Password"
+                                                        value={password}
+                                                        onChange={(e) => {
+                                                            setPassword(e.target.value);
+                                                            if (passwordError) setPasswordError("");
+                                                        }}
+                                                    />
+                                                    <button
+                                                        className="login__page__showpass__btn"
+                                                        type="button"
+                                                        onClick={togglePasswordVisibility}
+                                                    >
+                                                        {showPassword ? (
+                                                            <img src="./doNotShowPass.svg" alt="Hide password" />
+                                                        ) : (
+                                                            <img src="./showPass.svg" alt="Show password" />
+                                                        )}
+                                                    </button>
+                                                </div>
+                                                {passwordError && (
+                                                    <p className="field__error">{passwordError}</p>
+                                                )}
+                                            </div>
+                                            <div className="login__page__form__remember__password">
+                                                <label className="login__checkbox__remember">
+                                                    <Form.Check
+                                                        id="remember"
+                                                        type="checkbox"
+                                                        className="main-checkbox"
+                                                    />
+                                                    <p>Remember Me</p>
+                                                </label>
+                                                <Link className="forgot__password" href="#">
+                                                    Forgot Password?
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="container__btn__login__link">
+                                        <button
+                                            className="login__btn"
+                                            type="button"
+                                            onClick={handleLogin}
+                                        >
+                                            Continue
+                                        </button>
+                                        <div className="login__footer">
+                                            <span className="login__muted">Don’t have an account?</span>
+                                            <Link className="link__register__new" href="/register">Register now</Link>
+                                        </div>
+                                    </div>
+                                </Form>
+                            </>
+                        )}
+                        {isCompanySelected && (
+                            <>
+                                <div className="login__success">
+                                    <div className="login__intro">
+                                        {/* Nombre del owner */}
+                                        <h2 className="login__welcome">Hello {'Federico'} 👋🏻</h2>
+                                        <h3 className="login__subtitle">Select your company to continue</h3>
+                                    </div>
+                                </div>
+
+                                <Form className="login__form" noValidate>
+                                    <div className="login__fields">
+                                        <div className="field">
+                                            <div className="field__control">
+                                                <div className="field__label">
+                                                    <label htmlFor="email">Email</label>
+                                                </div>
+                                                <input
+                                                    id="email"
+                                                    type="email"
+                                                    className="field__input"
+                                                    placeholder="Enter Your Email"
+                                                    value={email}
+                                                    // onChange={(e) => {
+                                                    //     setEmail(e.target.value);
+                                                    //     if (emailError) setEmailError("");
+                                                    // }}
+                                                    onChange={(e) => {
+                                                        findCompanies(e.target.value)
+                                                    }}
+                                                    //disabled={isEmailReadonly}
+                                                    //readOnly={isEmailReadonly}
+                                                    autoComplete='off'
+                                                />
+                                            </div>
+                                        </div>
+                                        {companies.length > 0 && (
+                                            <>
+                                                <div className="login-page-form-company">
+                                                    <p className="login-page-form-company-head">Select your company</p>
+
+                                                    <ul className="login-page-form-company-list">
+                                                        {companies.map((item, key) => {
+                                                            return (
+                                                                <li
+                                                                    key={key}
+                                                                    className="login-page-form-company-item"
+                                                                    onClick={() => selectCompany(item.id, item.logo_url)}
+                                                                >
+                                                                    <h3 className="login-page-form-company-name">{item.company_name}</h3>
+                                                                    <p className="login-page-form-company-link">{`${process.env.NEXT_PUBLIC_PROTOCOL}://${item.subdomain}.${process.env.NEXT_PUBLIC_DOMAIN}`}</p>
+                                                                </li>
+                                                            );
+                                                        })}
+                                                    </ul>
+                                                </div>
+                                            </>
                                         )}
                                     </div>
-                                    <div className="login__page__form__remember__password">
-                                        <label className="login__checkbox__remember">
-                                            <Form.Check
-                                                id="remember"
-                                                type="checkbox"
-                                                className="main-checkbox"
+                                    <div className="container__btn__login__link">
+                                        <button
+                                            className="login__btn"
+                                            type="button"
+                                            onClick={handleLogin}
+                                        >
+                                            Log In
+                                        </button>
+                                        <div className="login__footer">
+                                            <span className="login__muted">Don’t have an account?</span>
+                                            <Link className="link__register__new" href="/register">Register now</Link>
+                                        </div>
+                                    </div>
+                                </Form>
+                            </>
+                        )}
+
+                        {isCompanySelected && selectedCompany && (
+                            <>
+                                <div className="login__success login__success--with-brand">
+                                    <div className="login__intro">
+                                        {/* Nombre de la compania */}
+                                        <h2 className="login__welcome">Welcome back to {'BoartPa'} company</h2>
+                                        <h3 className="login__subtitle">Log in to manage your rental shop with ease</h3>
+                                    </div>
+
+                                    <div className="login__company-brand">
+                                        {selectedLogo ? (
+                                            <img
+                                                // src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${selectedCompany.logo_url}`} => Verificar la ruta
+                                                src="./imgBikeExample.svg"
                                             />
-                                            <p>Remember Me</p>
-                                        </label>
-                                        <Link className="forgot__password" href="#">
-                                            Forgot Password?
-                                        </Link>
+                                        ) : (
+                                            <div className="login__company-brand--placeholder" />
+                                        )}
                                     </div>
                                 </div>
-                            </div>
-                            <div className="container__btn__login__link">
-                                <button
-                                    className="login__btn"
-                                    type="submit"
-                                >
-                                    Continue
-                                </button>
-                                <div className="login__footer">
-                                    <span className="login__muted">Don’t have an account?</span>
-                                    <Link className="link__register__new" href="/register">Register now</Link>
-                                </div>
-                            </div>
 
-                        </form>
+                                <Form className="login__form" noValidate>
+                                    <div className="login__fields">
+                                        <div className="field">
+                                            <div className={`field__control ${emailError ? 'field__control--error' : ''}`}>
+                                                <div className={`field__label ${emailError ? 'field__label--error' : ''}`}>
+                                                    <label htmlFor="email">Email</label>
+                                                </div>
+                                                <input
+                                                    id="email"
+                                                    type="email"
+                                                    className="field__input"
+                                                    placeholder="Enter Your Email"
+                                                    value={email}
+                                                    onChange={(e => {
+                                                        findCompanies(e.target.value);
+                                                        if (emailError) setEmailError("");
+                                                    })}
+                                                />
+                                            </div>
+                                            {emailError && (
+                                                <p className="field__error">{emailError}</p>
+                                            )}
+                                        </div>
+
+                                        <div className="container__password">
+                                            <div className="field">
+                                                <div className={`field__control ${passwordError ? 'field__control--error' : ''}`}>
+                                                    <div className={`field__label ${passwordError ? 'field__label--error' : ''}`}>
+                                                        <label htmlFor="password">Password</label>
+                                                    </div>
+                                                    <input
+                                                        id="password"
+                                                        type={showPassword ? 'text' : 'password'}
+                                                        className="field__input"
+                                                        placeholder="Enter Your Password"
+                                                        value={password}
+                                                        onChange={(e) => {
+                                                            setPassword(e.target.value);
+                                                            if (passwordError) setPasswordError("");
+                                                        }}
+                                                    />
+                                                    <button
+                                                        className="login__page__showpass__btn"
+                                                        type="button"
+                                                        onClick={togglePasswordVisibility}
+                                                    >
+                                                        {showPassword ? (
+                                                            <img src="./doNotShowPass.svg" alt="Hide password" />
+                                                        ) : (
+                                                            <img src="./showPass.svg" alt="Show password" />
+                                                        )}
+                                                    </button>
+                                                </div>
+                                                {passwordError && (
+                                                    <p className="field__error">{passwordError}</p>
+                                                )}
+                                            </div>
+                                            <div className="login__page__form__remember__password">
+                                                <label className="login__checkbox__remember">
+                                                    <Form.Check
+                                                        id="remember"
+                                                        type="checkbox"
+                                                        className="main-checkbox"
+                                                    />
+                                                    <p>Remember Me</p>
+                                                </label>
+                                                <Link className="forgot__password" href="#">
+                                                    Forgot Password?
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="container__btn__login__link">
+                                        <button
+                                            className="login__btn"
+                                            type="button"
+                                            onClick={handleLogin}
+                                        >
+                                            Log in
+                                        </button>
+                                        <div className="login__footer">
+                                            <span className="login__muted">Don’t have an account?</span>
+                                            <Link className="link__register__new" href="/register">Register now</Link>
+                                        </div>
+                                    </div>
+                                </Form>
+                            </>
+                        )}
+
                     </div>
                 </div>
             </section>

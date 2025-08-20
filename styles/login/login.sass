@@ -66,12 +66,19 @@
   gap: 48px
   position: relative
 
+.login__panel--with-brand
+  gap: 24px
+
 .login__success
   width: 100%
   display: flex
+  justify-content: center
+  gap: 16px
+
+.login__success--with-brand
   flex-direction: column
   align-items: center
-  gap: 16px
+  gap: 24px
 
 .login__intro
   display: flex
@@ -79,11 +86,8 @@
   align-items: center
   gap: 6px
   width: 100%
-
-.login__intro > * 
-  max-width: 470px
+  margin-inline: auto 
   text-align: center
-  line-height: normal
 
 .login__welcome
   font-weight: 700
@@ -91,14 +95,29 @@
   line-height: normal
   color: v.$primary
   margin: 0
-  white-space: normal
 
 .login__subtitle
   font-weight: 300
   font-size: 24px
-  line-height: normal
+  line-height: 1
   color: v.$text-dark
   margin: 0
+
+.login__company-brand
+  width: 140px
+  height: 140px
+  border-radius: 100%
+  overflow: hidden
+  display: flex
+  align-items: center
+  justify-content: center
+  flex: 0 0 auto
+
+.login__company-brand img
+  display: block
+  width: 100%
+  height: 100%
+  object-fit: cover
 
 .login__form
   width: 100%
@@ -226,6 +245,61 @@
   font-weight: 500
   box-shadow: 0px 4px 8px 0px rgba(72, 128, 255, 0.24) 
 
+.login-page-form-company
+  width: 100%
+  &-head
+    margin: 0 0 8px
+    font-size: 18px
+    font-weight: 500
+    line-height: 1
+    color: v.$text-dark
+  &-list
+    list-style: none
+    margin: 0
+    padding: 0
+    display: block
+    border-radius: 8px   /* el grupo */
+    /* si querés scroll cuando hay muchas: */
+    /* max-height: 280px
+       overflow: auto */
+  &-item
+    display: flex
+    flex-direction: column
+    gap: 6px
+    padding: 8px 16px
+    background: #FFF
+    border: 1px solid v.$border
+    cursor: pointer
+    &:not(:first-child)
+      border-top: 0
+    &:first-child
+      border-top-left-radius: 8px
+      border-top-right-radius: 8px
+    &:last-child
+      border-bottom-left-radius: 8px
+      border-bottom-right-radius: 8px
+    /* states */
+    &:hover
+      background: #F9FBFF
+    &:focus-visible
+      outline: 3px solid rgba(72,128,255,.28)
+      outline-offset: 2px
+    &.is-selected
+      background: #F3F7FF
+  &-name
+    margin: 0
+    font-size: 16px
+    font-weight: 500
+    line-height: 1.2
+    color: v.$text-dark
+  &-link
+    margin: 0
+    font-size: 14px
+    font-weight: 400
+    line-height: 1.2
+    color: #7B7B7B
+    word-break: break-word
+
 .login__footer
   display: flex
   justify-content: center
@@ -234,7 +308,7 @@
 .login__muted,
 .link__register__new
   font-size: 16px
-  line-height: 1           // ← mismo alto de línea para ambos
+  line-height: 1
   margin: 0
 .login__muted
   font-weight: 300
@@ -315,6 +389,4 @@
     transform: translateY(calc(-1 * clamp(12px, 1.6vh, 28px)))
   .login__glow::before
     --glow-size: clamp(720px, 38vw, 980px)
-    --glow-blur: 220px 
-  .login__welcome 
-    font-size: 42px
+    --glow-blur: 220px

@@ -1,0 +1,34 @@
+{
+  "companies_by_email": {
+    "fPrueba@gmail.com": [
+      {
+        "id": 144,
+        "company_name": "BoartPa",
+        "subdomain": "boartpa",
+        "logo_url": "/logos/boartpa.png"
+      },
+      {
+        "id": 145,
+        "company_name": "dfesaww",
+        "subdomain": "dfesaww",
+        "logo_url": "/logos/dfesaww.png"
+      }
+    ],
+    "admin@example.com": [
+      {
+        "id": 152,
+        "company_name": "TechCorp",
+        "subdomain": "techcorp",
+        "logo_url": "/logos/techcorp.png"
+      }
+    ],
+    "support@example.com": [
+      {
+        "id": 153,
+        "company_name": "TechCorp",
+        "subdomain": "techcorp",
+        "logo_url": "/logos/techcorp.png"
+      }
+    ]
+  }
+}
