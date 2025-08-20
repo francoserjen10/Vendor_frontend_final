@@ -230,15 +230,18 @@
   display: flex
   justify-content: center
   gap: 6px
-.login__muted
+  align-items: baseline
+.login__muted,
+.link__register__new
   font-size: 16px
+  line-height: 1           // ← mismo alto de línea para ambos
+  margin: 0
+.login__muted
   font-weight: 300
   color: #3E3A3B
 .link__register__new
   color: v.$primary
   font-weight: 400
-  font-size: 16px
-  line-height: auto
   text-decoration: none
 
 .login__brand
