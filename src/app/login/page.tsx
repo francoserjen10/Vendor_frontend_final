@@ -5,7 +5,7 @@ import { Form } from "react-bootstrap";
 import { pattern, required, run } from "../../../shared/validation";
 import { emailRegex, passwordRegex } from "../../../shared/constants";
 
-export default function Login() {
+export default function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState<string>('');
     const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -248,7 +248,7 @@ export default function Login() {
                                                     />
                                                     <p>Remember Me</p>
                                                 </label>
-                                                <Link className="forgot__password" href="#">
+                                                <Link className="forgot__password" href="/forgot-password">
                                                     Forgot Password?
                                                 </Link>
                                             </div>
@@ -433,7 +433,7 @@ export default function Login() {
                                                     />
                                                     <p>Remember Me</p>
                                                 </label>
-                                                <Link className="forgot__password" href="#">
+                                                <Link className="forgot__password" href="/forgot-password">
                                                     Forgot Password?
                                                 </Link>
                                             </div>
