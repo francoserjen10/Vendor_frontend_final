@@ -1,4 +1,5 @@
 'use client'
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Form } from "react-bootstrap";
@@ -42,7 +43,7 @@ export default function LoginPage() {
 
                                 <div className="login__company-brand">
                                     {/*Ingresar imagen de la compania*/}
-                                    <img src="/imgBikeExample.svg" alt="" />
+                                    <Image src="/imgBikeExample.svg" alt="" />
                                 </div>
                             </div>
 
