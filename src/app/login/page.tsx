@@ -174,7 +174,7 @@ export default function LoginPage() {
                             <>
                                 <div className="login__success">
                                     <div className="login__intro">
-                                        <h2 className="login__welcome">Welcome back</h2>
+                                        <h2 className="login__title">Welcome back</h2>
                                         <h3 className="login__subtitle">
                                             Log in to manage your rental shop with ease
                                         </h3>
@@ -264,7 +264,7 @@ export default function LoginPage() {
                                         </button>
                                         <div className="login__footer">
                                             <span className="login__muted">Don’t have an account?</span>
-                                            <Link className="link__register__new" href="/register">Register now</Link>
+                                            <Link className="login__link--register" href="/register">Register now</Link>
                                         </div>
                                     </div>
                                 </Form>
@@ -275,7 +275,7 @@ export default function LoginPage() {
                                 <div className="login__success">
                                     <div className="login__intro">
                                         {/* Nombre del owner */}
-                                        <h2 className="login__welcome">Hello {'Federico'} 👋🏻</h2>
+                                        <h2 className="login__title">Hello {'Federico'} 👋🏻</h2>
                                         <h3 className="login__subtitle">Select your company to continue</h3>
                                     </div>
                                 </div>
@@ -339,7 +339,7 @@ export default function LoginPage() {
                                         </button>
                                         <div className="login__footer">
                                             <span className="login__muted">Don’t have an account?</span>
-                                            <Link className="link__register__new" href="/register">Register now</Link>
+                                            <Link className="login__link--register" href="/register">Register now</Link>
                                         </div>
                                     </div>
                                 </Form>
@@ -351,7 +351,7 @@ export default function LoginPage() {
                                 <div className="login__success login__success--with-brand">
                                     <div className="login__intro">
                                         {/* Nombre de la compania */}
-                                        <h2 className="login__welcome">Welcome back to {'BoartPa'} company</h2>
+                                        <h2 className="login__title">Welcome back to {'BoartPa'} company</h2>
                                         <h3 className="login__subtitle">Log in to manage your rental shop with ease</h3>
                                     </div>
 
@@ -449,7 +449,7 @@ export default function LoginPage() {
                                         </button>
                                         <div className="login__footer">
                                             <span className="login__muted">Don’t have an account?</span>
-                                            <Link className="link__register__new" href="/register">Register now</Link>
+                                            <Link className="login__link--register" href="/register">Register now</Link>
                                         </div>
                                     </div>
                                 </Form>
