@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import { pattern, required, run } from "../../../shared/validation";
 import { emailRegex, passwordRegex } from "../../../shared/constants";
-import { useSearchParams } from "next/navigation";
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -53,45 +52,36 @@ export default function Login() {
     }, [email, db])
 
     //==============================Mock params Demo=====================================
-    const params = useSearchParams();
 
     useEffect(() => {
-        const isDemo = params.get("demo") === "1";
-        if (!isDemo) return;
-
         // Mock sencillo para demo
-        const mockEmail = "federico@example.com";
-        const fallbackCompanies: Company[] = [
-            { id: 144, company_name: "BoartPa", subdomain: "boartpa", logo_url: "https://placehold.co/140x140" },
+        const mockEmail = "fPrueba@gmail.com";
+        const fallback: Company[] = [
+            { id: 144, company_name: "BoartPa", subdomain: "boartpa", logo_url: "/imgBikeExample.svg" },
         ];
-        const demoCompanies =
-            db?.companies_by_email?.[mockEmail] ?? fallbackCompanies;
+        const apply = () => {
+            const hash = (window.location.hash.replace("#", "") || "p1") as "p1" | "p2";
+            const list = db?.companies_by_email?.[mockEmail] ?? fallback;
 
-        const p = params.get("panel") ?? "1";
-
-        if (p === "1") {
-            // Panel 1: login genérico
-            setIsCompanySelected(false);
-            setSelectedCompany(null);
-            setSelectedLogo("");
-            setEmail("");
-            setCompanies([]);
-        } else if (p === "2") {
-            // Panel 2: selección de compañía
-            setIsCompanySelected(true);
-            setSelectedCompany(null);
-            setSelectedLogo("");
-            setEmail(mockEmail);
-            setCompanies(demoCompanies);
-        } else if (p === "3") {
-            // Panel 3: login de compañía (con logo)
-            setIsCompanySelected(true);
-            setSelectedCompany(demoCompanies[0]?.id ?? null);
-            setSelectedLogo(demoCompanies[0]?.logo_url ?? "");
-            setEmail(mockEmail);
-            setCompanies(demoCompanies);
-        }
-    }, [params, db]);
+            if (hash === "p1") {
+                setIsCompanySelected(false);
+                setSelectedCompany(null);
+                setSelectedLogo("");
+                setEmail("");
+                setCompanies([]);
+            }
+            if (hash === "p2") {
+                setIsCompanySelected(true);
+                setSelectedCompany(null);
+                setSelectedLogo("");
+                setEmail(mockEmail);
+                setCompanies(list);
+            }
+        };
+        apply();
+        window.addEventListener("hashchange", apply);
+        return () => window.removeEventListener("hashchange", apply);
+    }, [db]);
 
 
     //==============================Visibility Password=====================================
@@ -280,7 +270,7 @@ export default function Login() {
                                 </Form>
                             </>
                         )}
-                        {isCompanySelected && (
+                        {isCompanySelected && !selectedCompany && (
                             <>
                                 <div className="login__success">
                                     <div className="login__intro">
@@ -310,8 +300,8 @@ export default function Login() {
                                                     onChange={(e) => {
                                                         findCompanies(e.target.value)
                                                     }}
-                                                    //disabled={isEmailReadonly}
-                                                    //readOnly={isEmailReadonly}
+                                                    disabled={isEmailReadonly}
+                                                    readOnly={isEmailReadonly}
                                                     autoComplete='off'
                                                 />
                                             </div>
