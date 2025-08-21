@@ -230,9 +230,19 @@ export default function LoginPage() {
                                                         onClick={togglePasswordVisibility}
                                                     >
                                                         {showPassword ? (
-                                                            <Image src="./doNotShowPass.svg" alt="Hide password" />
+                                                            <Image
+                                                                src="./doNotShowPass.svg"
+                                                                alt="Hide password"
+                                                                width={20}
+                                                                height={20}
+                                                            />
                                                         ) : (
-                                                            <Image src="./showPass.svg" alt="Show password" />
+                                                            <Image
+                                                                src="./showPass.svg"
+                                                                alt="Show password"
+                                                                width={20}
+                                                                height={20}
+                                                            />
                                                         )}
                                                     </button>
                                                 </div>
@@ -362,6 +372,8 @@ export default function LoginPage() {
                                                 // src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${selectedCompany.logo_url}`} => Verificar la ruta
                                                 src="./imgBikeExample.svg"
                                                 alt=""
+                                                width={140}
+                                                height={140}
                                             />
                                         ) : (
                                             <div className="login__company-brand--placeholder" />
@@ -416,9 +428,19 @@ export default function LoginPage() {
                                                         onClick={togglePasswordVisibility}
                                                     >
                                                         {showPassword ? (
-                                                            <Image src="./doNotShowPass.svg" alt="Hide password" />
+                                                            <Image
+                                                                src="./doNotShowPass.svg"
+                                                                alt="Hide password"
+                                                                width={20}
+                                                                height={20}
+                                                            />
                                                         ) : (
-                                                            <Image src="./showPass.svg" alt="Show password" />
+                                                            <Image
+                                                                src="./showPass.svg"
+                                                                alt="Show password"
+                                                                width={20}
+                                                                height={20}
+                                                            />
                                                         )}
                                                     </button>
                                                 </div>
