@@ -275,7 +275,7 @@ export default function LoginPage() {
                                         </button>
                                         <div className="login__footer">
                                             <span className="login__muted">Don’t have an account?</span>
-                                            <Link className="login__link--register" href="/register">Register now</Link>
+                                            <Link className="login__link" href="/register">Register now</Link>
                                         </div>
                                     </div>
                                 </Form>
