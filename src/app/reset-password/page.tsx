@@ -1,7 +1,10 @@
+'use client'
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function ResetPasswordPage() {
+    const [error, setError] = useState<string>("")
 
     return (
         <>
@@ -44,7 +47,7 @@ export default function ResetPasswordPage() {
                                     <p className="login__otp-title">Enter OTP code below</p>
 
                                     {/* Combinarlo con los devs */}
-                                    <div className="login__otp-grid" role="group" aria-label="One-time code">
+                                    <div className={`login__otp-grid ${error ? 'login__otp-grid--error' : ''}`} role="group" aria-label="One-time code">
                                         {Array.from({ length: 6 }).map((_, i) => (
                                             <input
                                                 key={i}
@@ -56,11 +59,16 @@ export default function ResetPasswordPage() {
                                             />
                                         ))}
                                     </div>
+                                    {error && (
+                                        <p id="otp-error" className="field__error">Invalid OTP. Please try again</p>
+                                    )}
                                 </div>
                                 <div className="container__btn__login__link">
+                                    {/* Funcionalidad real al boton */}
                                     <button
                                         className="login__btn"
                                         type="button"
+                                        onClick={() => setError('Invalid OTP. Please try again')}
                                     >
                                         Continue
                                     </button>
@@ -73,6 +81,9 @@ export default function ResetPasswordPage() {
                         </div>
                     </div>
                 </section>
+                <div className="login__brand">
+                    <h2><strong>Alo</strong><span>Manager</span></h2>
+                </div>
             </div>
         </>
     )
