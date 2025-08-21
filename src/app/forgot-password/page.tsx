@@ -43,7 +43,12 @@ export default function LoginPage() {
 
                                 <div className="login__company-brand">
                                     {/*Ingresar imagen de la compania*/}
-                                    <Image src="/imgBikeExample.svg" alt="" />
+                                    <Image
+                                        src="/imgBikeExample.svg"
+                                        alt=""
+                                        width={140}
+                                        height={140}
+                                    />
                                 </div>
                             </div>
 
