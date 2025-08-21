@@ -8,6 +8,7 @@
   display: grid
   grid-template-rows: auto 1fr auto
   align-content: start
+  overflow: hidden
 
 .container
   width: 100%
@@ -76,6 +77,8 @@
   gap: 16px
 
 .login__success--with-brand
+  width: 100%
+  display: flex
   flex-direction: column
   align-items: center
   gap: 24px
@@ -89,7 +92,7 @@
   margin-inline: auto 
   text-align: center
 
-.login__welcome
+.login__title
   font-weight: 700
   font-size: 36px
   line-height: normal
@@ -306,14 +309,14 @@
   gap: 6px
   align-items: baseline
 .login__muted,
-.link__register__new
+.login__link--register
   font-size: 16px
   line-height: 1
   margin: 0
 .login__muted
   font-weight: 300
   color: #3E3A3B
-.link__register__new
+.login__link--register
   color: v.$primary
   font-weight: 400
   text-decoration: none
@@ -342,10 +345,10 @@
   position: absolute
   inset: 0
   pointer-events: none
-  overflow: clip
+  z-index: 0
   &::before
     --glow-size: 700px
-    --glow-blur: 370px
+    --glow-blur: 150px
     content: ""
     position: absolute
     left: 50%
@@ -356,14 +359,23 @@
     border-radius: 100%
     background: rgba(72, 128, 255, 0.10)
     filter: blur(var(--glow-blur))
-    z-index: 0
+    box-shadow: 300px 300px 300px rgba(72, 128, 255, 0.18);
     will-change: transform, filter
 
+/* ===== forgot-password =====*/
+.login__panel--forgot-password
+  gap: 24px
+
+.login__link--go-back
+  text-align: center
+  a
+    font-size: 18px
+    font-weight: 500
+    color: v.$primary
+    text-decoration: none
+
 @media (max-height: 900px) and (min-width: 1280px)
-  .login__glow::before
-    /* un pelín más chico para no “empujar” visualmente */
-    --glow-size: clamp(560px, 40vw, 760px)
-    --glow-blur: 180px
+
 
 @media (min-width: 1600px)
   .container
