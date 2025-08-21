@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import { pattern, required, run } from "../../../shared/validation";
 import { emailRegex, passwordRegex } from "../../../shared/constants";
+import Image from "next/image";
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
@@ -229,9 +230,9 @@ export default function LoginPage() {
                                                         onClick={togglePasswordVisibility}
                                                     >
                                                         {showPassword ? (
-                                                            <img src="./doNotShowPass.svg" alt="Hide password" />
+                                                            <Image src="./doNotShowPass.svg" alt="Hide password" />
                                                         ) : (
-                                                            <img src="./showPass.svg" alt="Show password" />
+                                                            <Image src="./showPass.svg" alt="Show password" />
                                                         )}
                                                     </button>
                                                 </div>
@@ -357,9 +358,10 @@ export default function LoginPage() {
 
                                     <div className="login__company-brand">
                                         {selectedLogo ? (
-                                            <img
+                                            <Image
                                                 // src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${selectedCompany.logo_url}`} => Verificar la ruta
                                                 src="./imgBikeExample.svg"
+                                                alt=""
                                             />
                                         ) : (
                                             <div className="login__company-brand--placeholder" />
@@ -414,9 +416,9 @@ export default function LoginPage() {
                                                         onClick={togglePasswordVisibility}
                                                     >
                                                         {showPassword ? (
-                                                            <img src="./doNotShowPass.svg" alt="Hide password" />
+                                                            <Image src="./doNotShowPass.svg" alt="Hide password" />
                                                         ) : (
-                                                            <img src="./showPass.svg" alt="Show password" />
+                                                            <Image src="./showPass.svg" alt="Show password" />
                                                         )}
                                                     </button>
                                                 </div>
