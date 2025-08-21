@@ -1,20 +1,18 @@
 'use client'
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 
-export default function LoginPage() {
+export default function ForgotPasswordPage() {
     const [email, setEmail] = useState<string>('');
-    /***
-     * Funcionamiento:
-     * - Pide email => {
-     *      .Si subdominio es auth => 
-     * 
-     * } 
-     * 
-     * 
-     */
+
+    const router = useRouter();
+    const handleContinue = () => {
+        // Demo de navegación al siguiente panel:
+        router.push('/reset-password#otp');
+    };
     return (
         <>
             <div className="login">
@@ -32,13 +30,13 @@ export default function LoginPage() {
 
                 <section className="container">
                     <div className="login__main">
-                        <div className="login__panel login__panel--forgot-password">
+                        <div className="login__panel login__panel--with-brand">
                             <div className="login__success--with-brand">
                                 <div className="login__intro">
                                     <h2 className="login__title">Forgot password</h2>
-                                    <p className="login__subtitle">
+                                    <h3 className="login__subtitle">
                                         Enter the email associated with your account, and we’ll send you a link to reset your password.
-                                    </p>
+                                    </h3>
                                 </div>
 
                                 <div className="login__company-brand">
@@ -69,7 +67,7 @@ export default function LoginPage() {
                                     </div>
                                     {/* <p className="field__error">Mensaje de error</p> */}
                                 </div>
-                                <button type="button" className="login__btn">
+                                <button type="button" className="login__btn" onClick={handleContinue}>
                                     Reset password
                                 </button>
                                 <div className="login__link--go-back">

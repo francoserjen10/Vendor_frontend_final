@@ -309,14 +309,14 @@
   gap: 6px
   align-items: baseline
 .login__muted,
-.login__link--register
+.login__link
   font-size: 16px
   line-height: 1
   margin: 0
 .login__muted
   font-weight: 300
   color: #3E3A3B
-.login__link--register
+.login__link
   color: v.$primary
   font-weight: 400
   text-decoration: none
@@ -359,13 +359,10 @@
     border-radius: 100%
     background: rgba(72, 128, 255, 0.10)
     filter: blur(var(--glow-blur))
-    box-shadow: 300px 300px 300px rgba(72, 128, 255, 0.18);
+    box-shadow: 300px 300px 300px rgba(72, 128, 255, 0.18)
     will-change: transform, filter
 
 /* ===== forgot-password =====*/
-.login__panel--forgot-password
-  gap: 24px
-
 .login__link--go-back
   text-align: center
   a
@@ -374,8 +371,51 @@
     color: v.$primary
     text-decoration: none
 
-@media (max-height: 900px) and (min-width: 1280px)
+/* ===== resset-password =====*/
+.login__otp
+  width: 416px
+  margin: 0 auto
+  display: flex
+  flex-direction: column
+  gap: 32px
 
+.login__otp-head
+  display: flex;
+  flex-direction: column;
+  gap: 8px;  /* Figma */
+  align-items: flex-start;
+
+.login__otp-title
+  margin: 0
+  font-size: 18px
+  font-weight: 500
+  color: v.$text-dark
+
+.login__otp-grid
+  width: 100%
+  display: grid
+  grid-template-columns: repeat(6, 1fr)
+  gap: 8px
+
+.login__otp-input
+  height: 60px
+  width: 100%
+  padding: 8px 16px
+  background: v.$surface
+  border: 1px solid v.$border
+  border-radius: 8px
+  text-align: center
+  font-size: 24px
+  font-weight: 300
+  color: v.$text-dark
+  outline: none
+  transition: border-color .2s, box-shadow .2s
+  -moz-appearance: textfield;
+  appearance: textfield;
+
+.login__otp-input:focus
+  border-color: v.$primary
+  box-shadow: 0 0 0 3px rgba(72, 128, 255, 0.15)
 
 @media (min-width: 1600px)
   .container
