@@ -225,7 +225,7 @@ export default function LoginPage() {
                                                         }}
                                                     />
                                                     <button
-                                                        className="login__page__showpass__btn"
+                                                        className="login__showpass-btn"
                                                         type="button"
                                                         onClick={togglePasswordVisibility}
                                                     >
@@ -423,7 +423,7 @@ export default function LoginPage() {
                                                         }}
                                                     />
                                                     <button
-                                                        className="login__page__showpass__btn"
+                                                        className="login__showpass-btn"
                                                         type="button"
                                                         onClick={togglePasswordVisibility}
                                                     >
