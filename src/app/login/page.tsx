@@ -61,17 +61,17 @@ export default function LoginPage() {
             { id: 144, company_name: "BoartPa", subdomain: "boartpa", logo_url: "/imgBikeExample.svg" },
         ];
         const apply = () => {
-            const hash = (window.location.hash.replace("#", "") || "p1") as "p1" | "p2";
+            const hash = (window.location.hash.replace("#", "") || "panel1") as "panel1" | "panel2";
             const list = db?.companies_by_email?.[mockEmail] ?? fallback;
 
-            if (hash === "p1") {
+            if (hash === "panel1") {
                 setIsCompanySelected(false);
                 setSelectedCompany(null);
                 setSelectedLogo("");
                 setEmail("");
                 setCompanies([]);
             }
-            if (hash === "p2") {
+            if (hash === "panel2") {
                 setIsCompanySelected(true);
                 setSelectedCompany(null);
                 setSelectedLogo("");
@@ -473,7 +473,7 @@ export default function LoginPage() {
                                         </button>
                                         <div className="login__footer">
                                             <span className="login__muted">Don’t have an account?</span>
-                                            <Link className="login__link--register" href="/register">Register now</Link>
+                                            <Link className="login__link" href="/register">Register now</Link>
                                         </div>
                                     </div>
                                 </Form>

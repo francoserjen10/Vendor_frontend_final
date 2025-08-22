@@ -14,20 +14,28 @@ export default function ResetPasswordPage() {
     const [error, setError] = useState<string>("")
     const [otpCodeFormVisibility, setOtpCodeFormVisibility] = useState<boolean>(false)
     const [resetPasswordVisibility, setResetPasswordVisibility] = useState<boolean>(false)
+    const [successVisibility, setSuccessVisibility] = useState<boolean>(false);
 
     //==============================Mock params Demo=====================================
     useEffect(() => {
         const apply = () => {
             setError("");
-            const hash = (window.location.hash.replace("#", "") || "otp") as "otp" | "password";
+            const hash = (window.location.hash.replace("#", "") || "otp") as "otp" | "password" | "success";
 
             if (hash === "otp") {
                 setOtpCodeFormVisibility(true);
                 setResetPasswordVisibility(false);
+                setSuccessVisibility(false);
             }
             if (hash === "password") {
                 setOtpCodeFormVisibility(false);
                 setResetPasswordVisibility(true);
+                setSuccessVisibility(false);
+            }
+            if (hash === "success") {
+                setOtpCodeFormVisibility(false);
+                setResetPasswordVisibility(false);
+                setSuccessVisibility(true);
             }
         };
         apply();
@@ -258,6 +266,30 @@ export default function ResetPasswordPage() {
                                             </div>
                                         </div>
                                     </Form>
+                                </>
+                            )}
+                            {successVisibility && (
+                                <>
+                                    <div className="login__success--with-brand login__success--final">
+                                        <div className="login__success-illustration">
+                                            <Image
+                                                src="/loginSuccess.svg"   // poné el asset real; por ahora placeholder
+                                                alt="Password reset successful"
+                                                width={300}
+                                                height={315}
+                                                priority
+                                            />
+                                        </div>
+                                        <div className="login__intro">
+                                            <h2 className="login__title">Success!</h2>
+                                            <h3 className="login__subtitle">
+                                                Your password has been successfully reset. Please log in with your new credentials
+                                            </h3>
+                                        </div>
+                                        <div className="container__btn__login__link">
+                                            <Link href="/login" className="login__btn">Go to Log in</Link>
+                                        </div>
+                                    </div>
                                 </>
                             )}
                         </div>
