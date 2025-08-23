@@ -77,7 +77,7 @@ export default function ResetPasswordPage() {
                 <div className="login__glow" aria-hidden />
 
                 <header className="login__header container">
-                    <h1 className="login__title">LOG IN</h1>
+                    <h1 className="title__header">LOG IN</h1>
                     <nav className="login__nav">
                         <Link className="login__nav-link login__nav-link--active" href="#">Home</Link>
                         <Link className="login__nav-link" href="#">About us</Link>
@@ -93,8 +93,8 @@ export default function ResetPasswordPage() {
                                 <>
                                     <div className="login__success--with-brand">
                                         <div className="login__intro">
-                                            <h2 className="login__title">Forgot password</h2>
-                                            <h3 className="login__subtitle">
+                                            <h2 className="form__title">Forgot password</h2>
+                                            <h3 className="form__subtitle">
                                                 Check your email for password reset instructions and enter the OTP to continue
                                             </h3>
                                         </div>
@@ -151,8 +151,8 @@ export default function ResetPasswordPage() {
                                 <>
                                     <div className="login__success--with-brand">
                                         <div className="login__intro">
-                                            <h2 className="login__title">Reset your password</h2>
-                                            <h3 className="login__subtitle">
+                                            <h2 className="form__title">Reset your password</h2>
+                                            <h3 className="form__subtitle">
                                                 Enter your new password
                                             </h3>
                                         </div>
@@ -273,7 +273,7 @@ export default function ResetPasswordPage() {
                                     <div className="login__success--with-brand login__success--final">
                                         <div className="login__success-illustration">
                                             <Image
-                                                src="/loginSuccess.svg"   // poné el asset real; por ahora placeholder
+                                                src="/loginSuccess.svg"
                                                 alt="Password reset successful"
                                                 width={300}
                                                 height={315}
@@ -281,8 +281,8 @@ export default function ResetPasswordPage() {
                                             />
                                         </div>
                                         <div className="login__intro">
-                                            <h2 className="login__title">Success!</h2>
-                                            <h3 className="login__subtitle">
+                                            <h2 className="form__title">Success!</h2>
+                                            <h3 className="form__subtitle">
                                                 Your password has been successfully reset. Please log in with your new credentials
                                             </h3>
                                         </div>

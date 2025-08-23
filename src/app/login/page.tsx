@@ -61,7 +61,7 @@ export default function LoginPage() {
             { id: 144, company_name: "BoartPa", subdomain: "boartpa", logo_url: "/imgBikeExample.svg" },
         ];
         const apply = () => {
-            const hash = (window.location.hash.replace("#", "") || "panel1") as "panel1" | "panel2";
+            const hash = (window.location.hash.replace("#", "") || "panel1") as "panel1" | "panel2" | "panel3";
             const list = db?.companies_by_email?.[mockEmail] ?? fallback;
 
             if (hash === "panel1") {
@@ -77,6 +77,13 @@ export default function LoginPage() {
                 setSelectedLogo("");
                 setEmail(mockEmail);
                 setCompanies(list);
+            }
+            if (hash === "panel3") {
+                setIsCompanySelected(true);
+                setSelectedCompany(1);
+                setSelectedLogo("/imgBikeExample.svg");
+                setEmail(mockEmail);
+                setCompanies([]);
             }
         };
         apply();
@@ -158,7 +165,7 @@ export default function LoginPage() {
             <div className="login__glow" aria-hidden />
 
             <header className="login__header container">
-                <h1 className="login__title">LOG IN</h1>
+                <h1 className="title__header">LOG IN</h1>
                 <nav className="login__nav">
                     <Link className="login__nav-link login__nav-link--active" href="#">Home</Link>
                     <Link className="login__nav-link" href="#">About us</Link>
@@ -175,8 +182,8 @@ export default function LoginPage() {
                             <>
                                 <div className="login__success">
                                     <div className="login__intro">
-                                        <h2 className="login__title">Welcome back</h2>
-                                        <h3 className="login__subtitle">
+                                        <h2 className="form__title">Welcome back</h2>
+                                        <h3 className="form__subtitle">
                                             Log in to manage your rental shop with ease
                                         </h3>
                                     </div>
@@ -275,7 +282,7 @@ export default function LoginPage() {
                                         </button>
                                         <div className="login__footer">
                                             <span className="login__muted">Don’t have an account?</span>
-                                            <Link className="login__link" href="/register">Register now</Link>
+                                            <Link className="login__link" href="/signup">Register now</Link>
                                         </div>
                                     </div>
                                 </Form>
@@ -286,8 +293,8 @@ export default function LoginPage() {
                                 <div className="login__success">
                                     <div className="login__intro">
                                         {/* Nombre del owner */}
-                                        <h2 className="login__title">Hello {'Federico'} 👋🏻</h2>
-                                        <h3 className="login__subtitle">Select your company to continue</h3>
+                                        <h2 className="form__title">Hello {'Federico'} 👋🏻</h2>
+                                        <h3 className="form__subtitle">Select your company to continue</h3>
                                     </div>
                                 </div>
 
@@ -350,7 +357,7 @@ export default function LoginPage() {
                                         </button>
                                         <div className="login__footer">
                                             <span className="login__muted">Don’t have an account?</span>
-                                            <Link className="login__link" href="/register">Register now</Link>
+                                            <Link className="login__link" href="/signup">Register now</Link>
                                         </div>
                                     </div>
                                 </Form>
@@ -362,8 +369,8 @@ export default function LoginPage() {
                                 <div className="login__success login__success--with-brand">
                                     <div className="login__intro">
                                         {/* Nombre de la compania */}
-                                        <h2 className="login__title">Welcome back to {'BoartPa'} company</h2>
-                                        <h3 className="login__subtitle">Log in to manage your rental shop with ease</h3>
+                                        <h2 className="form__title">Welcome back to {'BoartPa'} company</h2>
+                                        <h3 className="form__subtitle">Log in to manage your rental shop with ease</h3>
                                     </div>
 
                                     <div className="login__company-brand">
@@ -473,7 +480,7 @@ export default function LoginPage() {
                                         </button>
                                         <div className="login__footer">
                                             <span className="login__muted">Don’t have an account?</span>
-                                            <Link className="login__link" href="/register">Register now</Link>
+                                            <Link className="login__link" href="/signup">Register now</Link>
                                         </div>
                                     </div>
                                 </Form>

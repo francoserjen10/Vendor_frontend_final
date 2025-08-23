@@ -8,10 +8,10 @@ import { Form } from "react-bootstrap";
 export default function ForgotPasswordPage() {
     const [email, setEmail] = useState<string>('');
 
-    const router = useRouter();
+    // const router = useRouter();
     const handleContinue = () => {
         // Demo de navegación al siguiente panel:
-        router.push('/reset-password');
+        // router.push('/reset-password');
     };
     return (
         <>
@@ -19,7 +19,7 @@ export default function ForgotPasswordPage() {
                 <div className="login__glow" aria-hidden />
 
                 <header className="login__header container">
-                    <h1 className="login__title">LOG IN</h1>
+                    <h1 className="title__header">LOG IN</h1>
                     <nav className="login__nav">
                         <Link className="login__nav-link login__nav-link--active" href="#">Home</Link>
                         <Link className="login__nav-link" href="#">About us</Link>
@@ -33,8 +33,8 @@ export default function ForgotPasswordPage() {
                         <div className="login__panel login__panel--with-brand">
                             <div className="login__success--with-brand">
                                 <div className="login__intro">
-                                    <h2 className="login__title">Forgot password</h2>
-                                    <h3 className="login__subtitle">
+                                    <h2 className="form__title">Forgot password</h2>
+                                    <h3 className="form__subtitle">
                                         Enter the email associated with your account, and we’ll send you a link to reset your password.
                                     </h3>
                                 </div>
