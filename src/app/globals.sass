@@ -2,6 +2,7 @@
 @use "./styles/mixins" as m
 @use "./styles/login/login"
 @use "./styles/common/inputs"
+@use "./styles/signup/signup"
 @use "./styles/common/form-errors"
 
 // Global fonts and styles
@@ -49,6 +50,11 @@ html, body
 :root
   --max-width: 1920px
 
+html,
+body
+  max-width: 100vw
+  overflow-x: hidden
+  
 *
   box-sizing: border-box
   padding: 0

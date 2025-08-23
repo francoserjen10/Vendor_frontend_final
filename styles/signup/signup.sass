@@ -1,0 +1,203 @@
+@use "./styles/variables" as v
+
+.signup__intro
+  display: flex
+  flex-direction: column
+  gap: 16px
+  margin-top: 24px
+
+.signup__layout
+  display: grid
+  grid-template-columns: 50%
+  column-gap: 48px
+  row-gap: 24px
+  grid-auto-flow: row
+  align-items: start
+
+.login__panel--slim
+  max-width: 100%
+  width: 100%
+  margin: 0
+  grid-column: 1 
+  grid-row: 1
+
+.signup__form
+  display: flex
+  flex-direction: column
+  gap: 32px
+  padding: 0
+  margin-top: 48px
+  align-items: stretch
+
+.login__fields--grid
+  display: grid
+  grid-template-columns: repeat(2, 2fr)
+  gap: 16px
+  margin: 0
+
+.field__control--select .field__select
+  appearance: none
+  -webkit-appearance: none
+  -moz-appearance: none
+
+.field__select:required:invalid
+  color: v.$placeholder
+
+.field__select option
+  color: v.$text-dark
+
+.field__control--with-chip
+  position: relative
+
+.field__control.field__control--with-chip
+  gap: 6px
+
+.field__chip-select
+  appearance: none
+  -webkit-appearance: none
+  -moz-appearance: none
+  //display: flex
+  height: 24px
+  min-width: 64px
+  border: 0
+  border-radius: 4px
+  background: #97979733
+  padding-left: 4px
+  padding-right: 22px
+  background-image: url('/down.svg')
+  background-repeat: no-repeat
+  background-position: right 6px center
+  background-size: 10px 6px
+  font-size: 16px
+  font-weight: 300
+  line-height: 24px
+  color: v.$text-dark
+  cursor: pointer
+
+.signup__checks
+  display: flex
+  flex-direction: column
+  gap: 16px
+  margin: 0
+  > span
+    font-size: 16px
+    font-weight: 300
+    line-height: normal
+
+.signup__glow
+  position: relative
+  width: 500px
+  height: 500px
+  left: 0
+  right: 0
+  top: 0
+  background: rgba(72,128,255,0.20)
+  border-radius: 100%
+  filter: blur(150px)
+  pointer-events: none
+
+.signup__visual
+  grid-column: 2 
+  grid-row: 1
+  height: 100%
+  display: flex
+  flex-direction: column
+  justify-content: center
+  justify-self: end
+  align-items: flex-start
+  width: 600px
+
+.signup__art
+  position: relative 
+  height: 466px 
+  overflow: visible
+
+.signup__art-item
+  position: absolute
+  display: block
+
+.signup__art-item--dashboard
+  left: 200px
+  top: 0px
+  z-index: 1
+
+.signup__art-item--chart
+  left: 261px
+  top: 135px
+  z-index: 2
+
+.signup__art-item--person
+  left: 0px
+  top: 66px
+  z-index: 3
+
+.signup__art-item--bike
+  left: 233px
+  top: 57px
+  z-index: 4
+
+.signup__brand
+  align-self: end 
+  justify-self: end 
+  position: static !important 
+  margin: 0 0 8px 0 
+  transform: translateY(6px)
+
+.signup__lang
+  display: inline-flex
+  justify-content: center
+  gap: 8px
+  margin-bottom: 10px
+
+.signup__lang-flag
+  border-radius: 4px
+  display: block
+
+.signup__lang-selectwrap
+  display: flex
+  align-items: center
+  gap: 6px
+
+.signup__lang-select
+  border: 0
+  outline: none
+  font-size: 16px
+  font-weight: 500
+  line-height: 24px
+  color: v.$text-dark
+  cursor: pointer
+  appearance: none
+  -webkit-appearance: none
+  -moz-appearance: none
+  background-image: url('/arrowLanguage.svg')
+  background-repeat: no-repeat
+  background-position: right 6px center
+  background-size: 14px 14px
+
+.signup__lang-caret
+  width: 14px
+  height: 14px
+  display: block
+  pointer-events: none
+
+@media (min-width: 1600px)
+  .signup__form
+    padding: 0
+    margin-top: 62px
+  .signup__visual
+    transform: scale(1.04)
+    transform-origin: bottom right
+  .signup__brand
+    transform: translateY(32px)
+
+@media (min-width: 1920px)
+  .signup__layout
+    grid-template-columns: 50%
+  .signup__visual
+    justify-self: center
+  .signup__form
+    gap: 48px
+    margin-top: 62px
+  .signup__brand
+    transform: translateY(32px)
+    
