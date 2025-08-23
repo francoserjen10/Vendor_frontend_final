@@ -12,7 +12,6 @@ export default function SignupPage() {
     //==============================Visibility Password=====================================
     const togglePasswordVisibility = () => { setShowPassword(!showPassword) };
     const toggleConfirmPasswordVisibility = () => { setShowConfirmPassword(!showConfirmPassword) };
-
     return (
         <>
             <div className="login signup">
@@ -30,13 +29,12 @@ export default function SignupPage() {
                     </div>
 
                     <div className="signup__layout">
-                        <div className="login__panel login__panel--slim">
+                        <div className="login__panel login__panel--slim member__panel">
                             <Form className="signup__form" noValidate>
-                                {/* GRID con 2 columnas */}
                                 <div className="login__fields login__fields--grid">
 
                                     <div className="field">
-                                        <div className="field__control u-shadow">
+                                        <div className="field__control">
                                             <div className="field__label">
                                                 <label htmlFor="firstName">First Name<span className="required-star">*</span></label>
                                             </div>
@@ -45,7 +43,7 @@ export default function SignupPage() {
                                     </div>
 
                                     <div className="field">
-                                        <div className="field__control u-shadow">
+                                        <div className="field__control">
                                             <div className="field__label">
                                                 <label htmlFor="lastName">Last Name<span className="required-star">*</span></label>
                                             </div>
@@ -54,92 +52,7 @@ export default function SignupPage() {
                                     </div>
 
                                     <div className="field">
-                                        <div className="field__control u-shadow">
-                                            <div className="field__label">
-                                                <label htmlFor="email">Email<span className="required-star">*</span>
-                                                </label>
-                                            </div>
-                                            <input id="email" type="text" className="field__input" placeholder="Enter your email" />
-                                        </div>
-                                    </div>
-
-                                    <div className="field">
-                                        <div className="field__control field__control--with-chip u-shadow">
-                                            <div className="field__label">
-                                                <label htmlFor="mobile">Mobile Number <span className="required-star">*</span></label>
-                                            </div>
-                                            <select
-                                                id="dialCode"
-                                                className="field__chip-select"
-                                                defaultValue="+91"
-                                                aria-label="Country code"
-                                            >
-                                                {/* Agregar funcionalidad */}
-                                                <option value="+91">+91</option>
-                                            </select>
-                                            <input id="mobile" type="tel" className="field__input" placeholder="000 00 00" />
-                                        </div>
-                                    </div>
-
-                                    <div className="field">
-                                        <div className="field__control u-shadow">
-                                            <div className="field__label">
-                                                <label htmlFor="companyName">Company name<span className="required-star">*</span>
-                                                </label>
-                                            </div>
-                                            <input id="companyName" type="text" className="field__input" placeholder="Enter your company name" />
-                                        </div>
-                                    </div>
-
-                                    <div className="field">
-                                        <div className="field__control field__control--select u-shadow">
-                                            <div className="field__label">
-                                                <label htmlFor="industry">Select your industry</label>
-                                            </div>
-                                            <select id="industry" className="field__input field__select" required defaultValue="">
-                                                {/* Agregarle funcionalidad */}
-                                                <option value="">Select your industry</option>
-                                            </select>
-                                            <Image
-                                                src="/DownArrow.svg"
-                                                alt=""
-                                                width={24}
-                                                height={24}
-                                                className="field__caret"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="field">
-                                        <div className="field__control field__control--select u-shadow">
-                                            <div className="field__label">
-                                                <label htmlFor="country">Select country</label>
-                                            </div>
-                                            <select id="country" className="field__input field__select" required defaultValue="">
-                                                {/* Agregarle funcionalidad */}
-                                                <option value="">Select country</option>
-                                            </select>
-                                            <Image
-                                                src="/DownArrow.svg"
-                                                alt=""
-                                                width={24}
-                                                height={24}
-                                                className="field__caret"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="field">
-                                        <div className="field__control u-shadow">
-                                            <div className="field__label">
-                                                <label htmlFor="taxId">Tax Identification Number <span className="required-star">*</span></label>
-                                            </div>
-                                            <input id="taxId" type="text" className="field__input" placeholder="Tax identification Number" />
-                                        </div>
-                                    </div>
-
-                                    <div className="field">
-                                        <div className="field__control u-shadow">
+                                        <div className="field__control">
                                             <div className="field__label">
                                                 <label htmlFor="password">Password <span className="required-star">*</span></label>
                                             </div>
@@ -174,7 +87,7 @@ export default function SignupPage() {
                                     </div>
 
                                     <div className="field">
-                                        <div className="field__control u-shadow">
+                                        <div className="field__control">
                                             <div className="field__label">
                                                 <label htmlFor="confirm">Confirm Password <span className="required-star">*</span></label>
                                             </div>
@@ -213,10 +126,10 @@ export default function SignupPage() {
                                     <label className="login__checkbox__remember">
                                         <Form.Check
                                             type="checkbox"
-                                            className="main-checkbox u-shadow"
+                                            className="main-checkbox"
                                             defaultChecked
                                         />
-                                        <span className="u-textshadow">
+                                        <span className="">
                                             I agree to the <a className="login__link" href="#">Terms and Condition & Privacy Policy</a>
                                         </span>
                                     </label>
@@ -224,15 +137,15 @@ export default function SignupPage() {
                                     <label className="login__checkbox__remember">
                                         <Form.Check
                                             type="checkbox"
-                                            className="main-checkbox u-shadow"
+                                            className="main-checkbox"
                                             defaultChecked
                                         />
-                                        <span className="u-textshadow">I want to receive emails with the last updates</span>
+                                        <span className="">I want to receive emails with the last updates</span>
                                     </label>
                                 </div>
 
                                 <div className="container__btn__login__link">
-                                    <button className="login__btn u-shadow" type="button">Create my free account</button>
+                                    <button className="login__btn" type="button">Create my free account</button>
                                     <div className="login__footer">
                                         <span className="login__muted">Already have an account?</span>
                                         <Link className="login__link" href="/login">Log in</Link>
@@ -246,12 +159,12 @@ export default function SignupPage() {
                                         alt=""
                                         width={40}
                                         height={24}
-                                        className="signup__lang-flag u-shadow"
+                                        className="signup__lang-flag"
                                     />
                                     <div className="signup__lang-selectwrap">
                                         <select
                                             id="language"
-                                            className="signup__lang-select u-textshadow"
+                                            className="signup__lang-select "
                                             defaultValue="en"
                                         >
                                             <option value="en">English</option>
