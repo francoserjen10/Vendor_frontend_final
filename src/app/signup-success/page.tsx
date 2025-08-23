@@ -42,7 +42,7 @@ export default function SignupPage() {
                                 </div>
 
                                 <p className="auth-subtitle">
-                                    We've sent you an email to verify your address and complete your sign-up. Please check your inbox to finish the process
+                                    We’ve sent you an email to verify your address and complete your sign-up. Please check your inbox to finish the process
                                 </p>
 
                                 <div className="success__images">

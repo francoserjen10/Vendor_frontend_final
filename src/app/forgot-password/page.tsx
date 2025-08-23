@@ -8,7 +8,7 @@ import { Form } from "react-bootstrap";
 export default function ForgotPasswordPage() {
     const [email, setEmail] = useState<string>('');
 
-    const router = useRouter();
+    // const router = useRouter();
     const handleContinue = () => {
         // Demo de navegación al siguiente panel:
         // router.push('/reset-password');
