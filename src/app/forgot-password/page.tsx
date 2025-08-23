@@ -11,7 +11,7 @@ export default function ForgotPasswordPage() {
     const router = useRouter();
     const handleContinue = () => {
         // Demo de navegación al siguiente panel:
-        router.push('/reset-password');
+        // router.push('/reset-password');
     };
     return (
         <>

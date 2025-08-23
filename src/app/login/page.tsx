@@ -61,7 +61,7 @@ export default function LoginPage() {
             { id: 144, company_name: "BoartPa", subdomain: "boartpa", logo_url: "/imgBikeExample.svg" },
         ];
         const apply = () => {
-            const hash = (window.location.hash.replace("#", "") || "panel1") as "panel1" | "panel2";
+            const hash = (window.location.hash.replace("#", "") || "panel1") as "panel1" | "panel2" | "panel3";
             const list = db?.companies_by_email?.[mockEmail] ?? fallback;
 
             if (hash === "panel1") {
@@ -77,6 +77,13 @@ export default function LoginPage() {
                 setSelectedLogo("");
                 setEmail(mockEmail);
                 setCompanies(list);
+            }
+            if (hash === "panel3") {
+                setIsCompanySelected(true);
+                setSelectedCompany(1);
+                setSelectedLogo("/imgBikeExample.svg");
+                setEmail(mockEmail);
+                setCompanies([]);
             }
         };
         apply();
