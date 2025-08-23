@@ -273,7 +273,7 @@ export default function ResetPasswordPage() {
                                     <div className="login__success--with-brand login__success--final">
                                         <div className="login__success-illustration">
                                             <Image
-                                                src="/loginSuccess.svg"   // poné el asset real; por ahora placeholder
+                                                src="/loginSuccess.svg"
                                                 alt="Password reset successful"
                                                 width={300}
                                                 height={315}

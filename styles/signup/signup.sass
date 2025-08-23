@@ -205,3 +205,111 @@
   .signup__brand
     transform: translateY(32px)
     
+.login__main--success
+  margin-top: 48px
+
+.success
+  position: relative
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 32px
+  padding-top: 80px
+  padding-bottom: 80px
+
+.success__glow
+  position: absolute
+  left: 50%
+  top: 320px
+  transform: translate(-50%, -50%)
+  width: 500px
+  height: 500px
+  background: rgba(72,128,255,0.20)
+  border-radius: 50%
+  filter: blur(150px)
+  pointer-events: none
+  z-index: -1
+
+.success__titles
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 6px
+  text-align: center
+
+.auth-title
+  text-align: center
+
+.auth-title--primary
+  color: var(--Primary, #4880FF)
+  font-weight: 700
+  font-size: 36px
+  line-height: 1.2
+
+.auth-subtitle
+  text-align: center
+  color: var(--black-text, #202224)
+  font-weight: 300
+  font-size: 24px
+  line-height: 1.35
+  max-width: 720px
+  margin: 0 auto
+
+.success__images
+  position: relative
+  width: 630px
+  height: 410px
+  margin: 24px auto 0
+
+.success__img
+  position: absolute
+  display: block
+
+.success__img--dashboard
+  position: absolute
+  left: 0px
+  top: 0px
+  z-index: 1
+
+.success__img--person
+  position: absolute
+  left: 272px
+  top: 10px
+  z-index: 2
+
+.success__img--clock
+  //position: absolute
+  left: 518px
+  top: 39px
+  border-radius: 80px
+  z-index: 3
+
+.success__brand h2
+  font-size: 36px
+  line-height: 1.2
+  margin: 0
+
+.success__brand h2 strong
+  color: var(--Primary, #4880FF)
+  font-weight: 700
+
+.success__brand h2 span
+  color: var(--black-text, #202224)
+  font-style: italic
+  font-weight: 200
+
+.success__hint
+  color: #7B7B7B
+  font-size: 15px
+  font-weight: 300
+  span
+    font-weight: 600
+
+@media (min-width: 1600px)
+  .success__stack
+    transform: scale(1.06)
+    transform-origin: center
+
+@media (min-width: 1920px)
+  .success__stack
+    transform: scale(1.12)
