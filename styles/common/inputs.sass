@@ -84,6 +84,32 @@
         position: relative
         z-index: 2
 
+/*=== checks ===*/
+.radio
+  display: inline-flex
+  align-items: center
+  gap: 8px
+  overflow: hidden
+
+.radio__input
+  appearance: none
+  -webkit-appearance: none
+  -moz-appearance: none
+  width: 20px
+  height: 20px
+  border-radius: 50%
+  border: 1px solid v.$border
+  background: v.$surface
+  position: relative
+  outline: none
+  display: inline-block
+  vertical-align: middle
+  transition: border-color .2s, box-shadow .2s, background .2s
+  
+.radio__input:checked
+  border-color: v.$primary
+  background: radial-gradient(circle at 50% 50%, v.$surface 0 45%, transparent 46%) v.$primary
+
 .u-shadow
   box-shadow: 0 4px 4px rgba(0,0,0,.25)
   border-radius: 4px

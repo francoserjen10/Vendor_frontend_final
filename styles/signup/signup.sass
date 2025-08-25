@@ -284,19 +284,6 @@
   border-radius: 80px
   z-index: 3
 
-.success__brand h2
-  font-size: 36px
-  line-height: 1.2
-  margin: 0
-
-.success__brand h2 strong
-  color: var(--Primary, #4880FF)
-  font-weight: 700
-
-.success__brand h2 span
-  color: var(--black-text, #202224)
-  font-style: italic
-  font-weight: 200
 
 .success__hint
   color: #7B7B7B
@@ -304,6 +291,39 @@
   font-weight: 300
   span
     font-weight: 600
+
+.container__questionary
+  display: flex         /* en vez de inline-flex */
+  width: 100%
+  flex-direction: column
+  align-items: stretch
+  gap: 16px
+  margin: 0
+
+.questionary__group
+  width: 100%
+  display: grid
+  gap: 8px
+  /* por si algo raro intenta desbordar */
+  > * 
+    min-width: 0
+  
+.questionary__label
+  color: v.$text-dark
+  font-size: 18px
+  font-weight: 500
+  text-wrap: wrap
+
+.questionary__radios
+  display: inline-flex
+  align-items: center
+  gap: 24px
+
+.radio__text
+  color: v.$text-dark
+  font-size: 16px
+  font-weight: 300
+
 
 @media (min-width: 1600px)
   .success__stack
