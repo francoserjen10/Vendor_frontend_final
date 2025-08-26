@@ -25,6 +25,8 @@
 
 .login__main
   margin-top: clamp(56px, 12vh, 160px)
+  display: flex
+  justify-content: center
 
 .title__header
   margin: 0
@@ -59,7 +61,8 @@
 
 /* === Form === */
 .login__panel
-  width: 848px
+  //width: 848px
+  width: 100%
   margin: 0 auto
   display: flex
   flex-direction: column
@@ -130,7 +133,8 @@
   gap: 32px
   
 .container__password
-  display: grid
+  display: flex
+  flex-direction: column
   width: 100%
   gap: 8px
 
@@ -365,9 +369,31 @@
   display: flex
   justify-content: center
   align-items: center
-  width: 300px
+  width: auto
   height: auto
   max-width: 100%
+
+/*=== Tablets ===*/
+@media (max-width: 1024px)
+  .login .container
+    max-width: calc(100vw - 48px) // Esto es 24px, en realidad es de 16px
+
+  .login__panel 
+    width: 100%
+
+  .login__header
+    margin-top: 30px
+    gap: 16px
+    flex-wrap: wrap
+  
+  .form__subtitle
+    font-size: 20px
+  
+  .login__glow::before
+    --glow-size: 560px 
+  
+  .login__success-illustration > img
+    width: 280px
 
 @media (min-width: 1600px)
   .container
