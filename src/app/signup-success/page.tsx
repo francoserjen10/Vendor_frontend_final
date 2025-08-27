@@ -37,11 +37,11 @@ export default function SignupPage() {
                                 <span className="login__glow" />
 
                                 <div className="success__titles">
-                                    <h2 className="auth-title auth-title--primary">Success!</h2>
-                                    <h2 className="auth-title auth-title--primary">Your account is almost ready</h2>
+                                    <h2 className="form__title form__title--signup">Success!</h2>
+                                    <h2 className="form__title form__title--signup">Your account is almost ready</h2>
                                 </div>
 
-                                <p className="auth-subtitle">
+                                <p className="form__subtitle form__subtitle--signup-success">
                                     We’ve sent you an email to verify your address and complete your sign-up. Please check your inbox to finish the process
                                 </p>
 
@@ -58,7 +58,7 @@ export default function SignupPage() {
                                     </p>
 
                                 </div>
-                                <div className="login__brand">
+                                <div className="login__brand signup__brand">
                                     <h2><strong>Alo</strong><span>Manager</span></h2>
                                 </div>
                             </div>

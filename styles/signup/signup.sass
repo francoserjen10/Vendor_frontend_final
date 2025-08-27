@@ -179,27 +179,14 @@
 .login__main--success
   margin-top: 48px
 
+/* ==== success ==== */
 .success
   position: relative
   display: flex
   flex-direction: column
   align-items: center
   gap: 32px
-  padding-top: 80px
-  padding-bottom: 80px
-
-.success__glow
-  position: absolute
-  left: 50%
-  top: 320px
-  transform: translate(-50%, -50%)
-  width: 500px
-  height: 500px
-  background: rgba(72,128,255,0.20)
-  border-radius: 50%
-  filter: blur(150px)
-  pointer-events: none
-  z-index: -1
+  margin: 80px 0 0 0
 
 .success__titles
   display: flex
@@ -208,50 +195,41 @@
   gap: 6px
   text-align: center
 
-.auth-title
+.form__subtitle--signup-success
   text-align: center
-
-.auth-title--primary
-  color: var(--Primary, #4880FF)
-  font-weight: 700
-  font-size: 36px
-  line-height: 1.2
-
-.auth-subtitle
-  text-align: center
-  color: var(--black-text, #202224)
-  font-weight: 300
-  font-size: 24px
-  line-height: 1.35
   max-width: 720px
   margin: 0 auto
 
 .success__images
+  --s: 1
   position: relative
-  width: 630px
-  height: 410px
-  margin: 24px auto 0
+  width: calc(630px * var(--s))
+  height: calc(410px * var(--s))
+  margin: auto 0
 
 .success__img
   position: absolute
   display: block
 
 .success__img--dashboard
-  position: absolute
-  left: 0px
-  top: 0px
+  left: calc(0px * var(--s))
+  top: calc(0px * var(--s))
+  width: calc(400px * var(--s))
+  height: calc(273px * var(--s))
   z-index: 1
 
 .success__img--person
-  position: absolute
-  left: 272px
-  top: 10px
+  left: calc(272px * var(--s))
+  top: calc(10px * var(--s))
+  width: calc(262px * var(--s))
+  height: calc(400px * var(--s))
   z-index: 2
 
 .success__img--clock
-  //position: absolute
-  left: 518px
-  top: 39px
+  left: calc(518px * var(--s))
+  top: calc(39px * var(--s))
+  width: calc(111px * var(--s))
+  height: calc(111px * var(--s))
   border-radius: 80px
   z-index: 3
 
@@ -261,6 +239,8 @@
   font-weight: 300
   span
     font-weight: 600
+
+/* ==== questionary ==== */
 
 .container__questionary
   display: flex
@@ -341,7 +321,7 @@
   .login__fields--grid
     grid-template-columns: 1fr
 
-  .form__title-signup
+  .form__title--signup
     font-size: 24px
   .form__subtitle
     font-size: 16px
@@ -349,6 +329,15 @@
   .signup__lang
     margin: 0
 
+  .success
+    margin: 31px 0 0 0
+  
+  .success__images
+    --s: .80
+//Recordatorio: 
+//  Tablets: --s: .80
+//  Celulares: --s: .60   
+  
 /* ========= arreglar ========= */
 @media (min-width: 1600px)
   .success__stack
