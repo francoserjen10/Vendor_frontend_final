@@ -90,7 +90,7 @@ export default function SignupPage() {
 
                             </>
                         )}
-                        <div className="login__brand signup__brand">
+                        <div className="login__brand">
                             <h2><strong>Alo</strong><span>Manager</span></h2>
                         </div>
                     </div>
