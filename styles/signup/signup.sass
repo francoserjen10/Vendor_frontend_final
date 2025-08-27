@@ -4,23 +4,17 @@
   display: flex
   flex-direction: column
   gap: 16px
-  margin-top: 24px
+  margin-top: 32px
 
 .signup__layout
-  display: grid
-  grid-template-columns: 50%
+  display: flex
+  flex-direction: row
   column-gap: 48px
-  row-gap: 24px
-  grid-auto-flow: row
   align-items: start
 
 .login__panel--slim
   max-width: 100%
-  width: 100%
-  margin: 0
-  margin-top: 48px
-  grid-column: 1 
-  grid-row: 1
+  margin: 48px 0 0 0
 
 .member__panel
   margin-top: 80px
@@ -29,14 +23,14 @@
   display: flex
   flex-direction: column
   gap: 32px
-  padding: 0
+  margin: 0
   align-items: stretch
-  align-self: start
 
 .login__fields--grid
   display: grid
   grid-template-columns: repeat(2, 2fr)
-  gap: 16px
+  row-gap: 24px
+  column-gap: 16px
   margin: 0
 
 .field__control--select .field__select
@@ -101,19 +95,18 @@
   pointer-events: none
 
 .signup__visual
-  grid-column: 2 
-  grid-row: 1
   height: 100%
   display: flex
   flex-direction: column
   justify-content: center
   justify-self: end
   align-items: flex-start
-  width: 600px
+  width: 100%
 
 .signup__art
   position: relative 
-  height: 466px 
+  width: 100%
+  height: 100% 
   overflow: visible
 
 .signup__art-item
@@ -144,8 +137,7 @@
   align-self: end 
   justify-self: end 
   position: static !important 
-  margin: 0 0 8px 0 
-  transform: translateY(6px)
+  margin: 24px 0 0 0
 
 .signup__lang
   display: inline-flex
@@ -183,27 +175,6 @@
   height: 14px
   display: block
   pointer-events: none
-
-@media (min-width: 1600px)
-  .signup__form
-    padding: 0
-    margin-top: 62px
-  .signup__visual
-    transform: scale(1.04)
-    transform-origin: bottom right
-  .signup__brand
-    transform: translateY(32px)
-
-@media (min-width: 1920px)
-  .signup__layout
-    grid-template-columns: 50%
-  .signup__visual
-    justify-self: center
-  .signup__form
-    gap: 48px
-    margin-top: 62px
-  .signup__brand
-    transform: translateY(32px)
     
 .login__main--success
   margin-top: 48px
@@ -284,7 +255,6 @@
   border-radius: 80px
   z-index: 3
 
-
 .success__hint
   color: #7B7B7B
   font-size: 15px
@@ -293,7 +263,7 @@
     font-weight: 600
 
 .container__questionary
-  display: flex         /* en vez de inline-flex */
+  display: flex
   width: 100%
   flex-direction: column
   align-items: stretch
@@ -304,7 +274,6 @@
   width: 100%
   display: grid
   gap: 8px
-  /* por si algo raro intenta desbordar */
   > * 
     min-width: 0
   
@@ -324,12 +293,81 @@
   font-size: 16px
   font-weight: 300
 
+@media (max-width: 1366px)
+  .signup__layout
+    column-gap: 32px
+  .signup__visual
+    width: 80%
+  .signup__art
+    transform: scale(.90)
+    transform-origin: left
 
+@media (max-width: 1280px)
+  .signup__layout
+    column-gap: 28px
+  .signup__visual
+    width: 60%
+  .signup__art
+    transform: scale(.80)
+  .signup__brand
+    padding-right: 10%
+
+@media (max-width: 1140px)
+  .signup__layout
+    column-gap: 4px
+  .signup__visual
+    width: 40%
+  .signup__art
+    transform: scale(.65)
+
+@media (max-width: 1024px)
+  .signup__layout
+    flex-direction: column
+    align-items: center
+  .signup__intro
+      margin-top: 30px
+
+  .signup__art
+    display: none
+  .signup__brand
+    display: inline-flex
+    margin: 0 auto
+    padding: 63px 0 0 0
+
+  .login__panel--slim
+    gap: 32px
+
+  .login__fields--grid
+    grid-template-columns: 1fr
+
+  .form__title
+    font-size: 24px
+  .form__subtitle
+    font-size: 16px
+
+/* ========= arreglar ========= */
 @media (min-width: 1600px)
   .success__stack
     transform: scale(1.06)
     transform-origin: center
+  .signup__form
+    padding: 0
+    margin-top: 62px
+  .signup__visual
+    transform: scale(1.04)
+    transform-origin: bottom right
+  .signup__brand
+    transform: translateY(32px)
 
 @media (min-width: 1920px)
   .success__stack
     transform: scale(1.12)
+  .signup__layout
+    grid-template-columns: 50%
+  .signup__visual
+    justify-self: center
+  .signup__form
+    gap: 48px
+    margin-top: 62px
+  .signup__brand
+    transform: translateY(32px)
