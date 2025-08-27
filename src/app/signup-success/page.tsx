@@ -31,9 +31,9 @@ export default function SignupPage() {
                     <h1 className="title__header">SIGN UP</h1>
                 </header>
                 <section className="container">
-                    {success && (
-                        <>
-                            <div className="success">
+                    <div className="success">
+                        {success && (
+                            <>
                                 <span className="login__glow" />
 
                                 <div className="success__titles">
@@ -58,41 +58,43 @@ export default function SignupPage() {
                                     </p>
 
                                 </div>
-                                <div className="login__brand signup__brand">
-                                    <h2><strong>Alo</strong><span>Manager</span></h2>
-                                </div>
-                            </div>
-                        </>
-                    )}
+                            </>
+                        )}
 
-                    {verified && (
-                        <>
-                            <div className="login__main" >
-                                <div className="login__panel login__panel--with-brand">
-                                    <div className="login__success--with-brand login__success--final">
-                                        <div className="login__success-illustration">
-                                            <Image
-                                                src="/loginSuccess.svg"
-                                                alt="Password reset successful"
-                                                width={300}
-                                                height={315}
-                                                priority
-                                            />
-                                        </div>
-                                        <div className="login__intro">
-                                            <h2 className="form__title">Let’s get started!</h2>
-                                            <h3 className="form__subtitle">
-                                                Your mail has been verified. Log in now to start managing your store
-                                            </h3>
-                                        </div>
-                                        <div className="container__btn__login__link">
-                                            <Link href="/login" className="login__btn">Log in</Link>
+                        {verified && (
+                            <>
+                                <div className="login__main" >
+                                    <div className="login__panel login__panel--with-brand">
+                                        <div className="login__success--with-brand login__success--final">
+                                            <div className="login__success-illustration">
+                                                <Image
+                                                    src="/loginSuccess.svg"
+                                                    alt="Password reset successful"
+                                                    width={300}
+                                                    height={315}
+                                                    priority
+                                                />
+                                            </div>
+                                            <div className="login__intro">
+                                                <h2 className="form__title">Let’s get started!</h2>
+                                                <h3 className="form__subtitle">
+                                                    Your mail has been verified. Log in now to start managing your store
+                                                </h3>
+                                            </div>
+                                            <div className="container__btn__login__link">
+                                                <Link href="/login" className="login__btn">Log in</Link>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </>
-                    )}
+
+                            </>
+                        )}
+                        <div className="login__brand signup__brand">
+                            <h2><strong>Alo</strong><span>Manager</span></h2>
+                        </div>
+                    </div>
+
                 </section>
             </div>
         </>
