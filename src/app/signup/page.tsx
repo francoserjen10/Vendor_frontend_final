@@ -21,7 +21,7 @@ export default function SignupPage() {
                 </header>
                 <section className="container">
                     <div className="signup__intro">
-                        <h2 className="form__title">
+                        <h2 className="form__title form__title--signup">
                             Organize your shop, save time, and stay in control — all in one place, effortlessly.
                         </h2>
                         <h3 className="form__subtitle">

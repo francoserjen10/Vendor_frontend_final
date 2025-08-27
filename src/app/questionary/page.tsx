@@ -43,11 +43,11 @@ export default function QuestionaryPage() {
 
                 <section className="container">
                     <div className="login__main">
-                        <div className="login__panel">
+                        <div className="login__panel login__panel--questionary">
                             {questionary1 && (
                                 <>
                                     <div className="login__intro">
-                                        <h2 className="form__title">Tell us about your business</h2>
+                                        <h2 className="form__title form__title--signup">Tell us about your business</h2>
                                         <h3 className="form__subtitle">
                                             This information helps us prepare your workspace
                                         </h3>
@@ -125,7 +125,7 @@ export default function QuestionaryPage() {
                             {questionary2 && (
                                 <>
                                     <div className="login__intro">
-                                        <h2 className="form__title">Tell us about your business</h2>
+                                        <h2 className="form__title form__title--signup">Tell us about your business</h2>
                                         <h3 className="form__subtitle">
                                             This information helps us prepare your workspace
                                         </h3>
@@ -191,7 +191,7 @@ export default function QuestionaryPage() {
                             {questionary3 && (
                                 <>
                                     <div className="login__intro">
-                                        <h2 className="form__title">You’re almost there!</h2>
+                                        <h2 className="form__title form__title--signup">You’re almost there!</h2>
                                         <h3 className="form__subtitle">
                                             This information helps us prepare your workspace
                                         </h3>

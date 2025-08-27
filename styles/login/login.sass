@@ -7,7 +7,7 @@
   background: v.$surface
   display: grid
   grid-template-rows: auto 1fr auto
-  align-content: start
+  align-content: flex-start
   overflow: hidden
 
 .container
@@ -25,6 +25,8 @@
 
 .login__main
   margin-top: clamp(56px, 12vh, 160px)
+  display: flex
+  justify-content: center
 
 .title__header
   margin: 0
@@ -59,7 +61,8 @@
 
 /* === Form === */
 .login__panel
-  width: 848px
+  //width: 848px
+  width: 100%
   margin: 0 auto
   display: flex
   flex-direction: column
@@ -95,7 +98,6 @@
 .form__title
   font-weight: 700
   font-size: 36px
-  line-height: normal
   color: v.$primary
   margin: 0
 
@@ -130,7 +132,8 @@
   gap: 32px
   
 .container__password
-  display: grid
+  display: flex
+  flex-direction: column
   width: 100%
   gap: 8px
 
@@ -151,6 +154,8 @@
   line-height: normal
   gap: 8px
   > p
+    font-size: 14px
+    font-weight: 400
     margin: 0
 
 .forgot__password
@@ -256,7 +261,7 @@
   color: #3E3A3B
 .login__link
   color: v.$primary
-  font-weight: 400
+  font-weight: 500
   text-decoration: none
 
 .login__brand
@@ -365,20 +370,9 @@
   display: flex
   justify-content: center
   align-items: center
-  width: 300px
+  width: auto
   height: auto
   max-width: 100%
-
-@media (min-width: 1600px)
-  .container
-    max-width: min(1440px, 100vw - 128px)
-  .login__main
-    margin-top: clamp(64px, 12vh, 180px)
-  .login__brand
-    margin: clamp(24px, 3vh, 48px) auto 0
-  .login__glow::before
-    --glow-size: clamp(620px, 42vw, 900px)
-    --glow-blur: 200px
 
 @media (min-width: 1920px)
   .container
@@ -394,3 +388,40 @@
   .login__glow::before
     --glow-size: clamp(720px, 38vw, 980px)
     --glow-blur: 220px
+
+@media (min-width: 1600px)
+  .container
+    max-width: min(1440px, 100vw - 128px)
+  .login__main
+    margin-top: clamp(64px, 12vh, 180px)
+  .login__brand
+    margin: clamp(24px, 3vh, 48px) auto 0
+  .login__glow::before
+    --glow-size: clamp(620px, 42vw, 900px)
+    --glow-blur: 200px
+
+
+/*=== Tablets ===*/
+@media (max-width: 1024px)
+  .container
+    max-width: calc(100vw - 32px)
+
+  .login__panel 
+    width: 100%
+
+  .login__header
+    margin-top: 30px
+    gap: 16px
+  
+  .form__title
+    //font-size: 36px
+  .form__subtitle
+    //font-size: 20px
+  
+  .login__glow::before
+    --glow-size: 560px 
+  
+  .login__success-illustration > img
+    width: 280px
+
+
