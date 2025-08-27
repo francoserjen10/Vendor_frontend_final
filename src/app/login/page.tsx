@@ -182,7 +182,7 @@ export default function LoginPage() {
                             <>
                                 <div className="login__success">
                                     <div className="login__intro">
-                                        <h2 className="form__title">Welcome back</h2>
+                                        <h2 className="form__title form__title-login">Welcome back</h2>
                                         <h3 className="form__subtitle">
                                             Log in to manage your rental shop with ease
                                         </h3>
