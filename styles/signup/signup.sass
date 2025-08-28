@@ -101,6 +101,7 @@
   justify-content: center
   justify-self: end
   align-items: flex-start
+  flex-wrap: nowrap
   width: 100%
 
 .signup__art
@@ -135,7 +136,7 @@
 
 .signup__brand
   align-self: end 
-  justify-self: end 
+  justify-self: end
   position: static !important 
   margin: 24px 0 0 0
 
@@ -307,12 +308,16 @@
   .signup__intro
       margin-top: 30px
 
+  .signup__visual
+    align-items: center
+    justify-content: flex-start
+
   .signup__art
     display: none
   .signup__brand
-    display: inline-flex
-    margin: 0 auto
-    padding: 63px 0 0 0
+    align-self: center
+    margin: 63px 0 0 0
+    padding: 0
 
   .login__panel--slim
     max-width: 100%
