@@ -1,0 +1,113 @@
+@use "./styles/variables" as v
+@use "./styles/mixins" as mixins
+
+.app-header
+  background: v.$surface
+  box-shadow: 0px 2px 20px -4px rgba(179, 203, 255, .04)
+  padding: 6px 24px
+  //height: 70px
+
+.app-header__inner
+  display: flex
+  align-items: center
+  justify-content: space-between
+  /* ta raaro */
+  gap: 10px
+
+.app-header__left
+  display: flex
+  align-items: center
+  padding: 10px
+  gap: 10px
+
+.app-header__breadcrumb
+  margin: 0
+  color: v.$text-dark
+  font-size: 24px
+  font-weight: 300
+
+.app-header__right
+  display: flex
+  align-items: center
+  gap: 24px
+
+/* BUTTON */
+.btn
+  border: 0
+  outline: 0
+  display: flex
+  align-items: center
+  justify-content: center
+
+.btn--primary
+  background: v.$primary
+  color: v.$surface
+  border-radius: 6px
+  box-shadow: 0 4px 8px 0 rgba(72,128,255,0.24)
+  white-space: nowrap
+  min-width: max-content
+  padding: 8px 16px
+  font-size: 16px
+  font-weight: 500
+  &:hover,
+  &:focus,
+  &:active
+    background: v.$primary !important
+    color: v.$surface !important
+
+.header-search
+  display: flex
+  align-items: center
+  gap: 6px
+  height: 100%
+  min-width: 235px
+  padding: 6px 16px
+  background: v.$surface
+  border: 1px solid v.$border
+  border-radius: 19px
+  svg
+    flex: 0 0 auto
+  .search__input
+    margin: 0
+    border: 0
+    outline: 0
+    background: transparent
+    width: 100%
+    color: v.$text-dark
+    font-size: 16px
+    font-weight: 300
+    &::placeholder
+      color: v.$placeholder
+      font-weight: 300
+
+.header-notification-btn
+  background: none
+  border: none
+
+.header-user__dropdown > .dropdown-toggle
+  background: transparent
+  color: inherit
+  border: 0
+  padding: 0
+  height: auto
+  display: inline-flex
+  align-items: center
+  gap: 8px
+  border-radius: 6px
+  box-shadow: none
+  &:hover,
+  &:focus,
+  &:active
+    background: transparent !important
+  &::after
+    display: none
+    
+.header-user
+  display: flex
+  align-items: center
+  gap: 8px
+  justify-content: flex-start
+  font-weight: 500
+  .header-user__details > span
+    font-size: 16px
+    color: v.$text-dark
