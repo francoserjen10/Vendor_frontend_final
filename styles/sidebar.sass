@@ -1,0 +1,83 @@
+@use "./styles/variables" as v
+
+.sidebar
+  background: v.$surface
+  border-right: 1px solid #E9ECF3
+  height: 100vh
+  overflow: hiden
+
+.sidebar__sections
+  height: 100%
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: stretch
+  // ======= figma
+  //width: 200, 
+  //alignSelf: 'stretch', 
+  //flexDirection: 'column', 
+  //justifyContent: 'flex-start', 
+  //alignItems: 'flex-start', 
+  //gap: 24, 
+  //display: 'inline-flex'
+
+.sidebar__section
+  padding: 0
+
+.sidebar__list
+  list-style: none
+  margin: 0
+  padding: 0
+
+.sidebar__link
+  display: inline-flex
+  align-items: center
+  gap: 8px
+  width: 100%
+  text-decoration: none
+  padding: 12px 24px
+  color: v.$text-dark
+  border-left: 4px solid transparent
+  border-radius: 0
+  &:hover
+    background: rgba(0,0,0,0.04)
+
+.sidebar__icon
+  width: 24px
+  height: 24px
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  color: #A9A9A9
+
+  /* el svg ocupa el contenedor */
+  svg
+    width: 100%
+    height: 100%
+    display: block
+
+  /* fuerza a que todo relleno/traZo herede el color */
+  svg [fill]:not([fill="none"])
+    fill: currentColor !important
+  svg [stroke]:not([stroke="none"])
+    stroke: currentColor !important
+
+.sidebar__text
+  font-size: 14px
+  font-weight: 500
+  color: v.$text-dark
+
+// === Active State
+.sidebar__item.is-active .sidebar__link
+  background: rgba(72, 128, 255, 0.08)
+  border-left-color: v.$primary
+  .sidebar__text
+    color: v.$primary
+  .sidebar__icon
+    color: v.$primary
+
+.sidebar__icon--danger
+  color: v.$danger !important
+  svg [fill], svg [stroke]
+    fill: initial !important
+    stroke: initial !important
