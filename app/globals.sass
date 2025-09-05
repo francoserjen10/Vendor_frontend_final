@@ -3,6 +3,7 @@
 @use "./styles/login"
 @use "./styles/signup"
 @use "./styles/header"
+@use "./styles/sidebar"
 @use "./styles/common/inputs"
 @use "./styles/common/form-errors"
 
@@ -72,3 +73,27 @@ a
 
 .dropdown-toggle::after
   display: none !important
+
+// ==== PRUEBAS
+.app-shell
+  display: grid
+  grid-template-columns: 240px 1fr
+  min-height: 100vh
+  background: #f6f8fc
+
+.app-shell__aside
+  position: sticky
+  top: 0
+  align-self: start
+  height: 100vh
+  overflow: auto
+  background: #fff
+  border-right: 1px solid #E9ECF3
+
+.app-shell__content
+  display: grid
+  grid-template-rows: auto 1fr
+  min-height: 100vh
+
+.app-shell__main
+  padding: 24px
