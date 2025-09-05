@@ -1,0 +1,123 @@
+@use "./styles/variables" as v
+
+.sidebar
+  box-sizing: border-box
+  background: v.$surface
+  min-height: 100dvh
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  //padding-block: 24px
+  row-gap: 24px
+  padding: 24px 0
+  // Arreglar scrollbar
+  overflow-y: auto
+  scrollbar-width: none
+  -ms-overflow-style: none
+  &::-webkit-scrollbar
+    display: none
+
+.sidebar__header
+  display: flex
+  align-items: center
+  justify-content: space-between
+  align-items: stretch 
+  padding-inline: 24px
+
+.sidebar__sections
+  //height: 100%
+  flex: 1
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  //align-items: stretch
+
+.sidebar__brand
+  font-size: 20px
+  display: flex
+  align-items: baseline
+  gap: 2px
+
+.sidebar__brand-alo
+  color: v.$primary
+  font-weight: 700
+
+.sidebar__brand-manager
+  color: v.$text-dark
+  font-style: italic
+  font-weight: 200
+
+.sidebar__burger
+  background: none
+  border: none
+  padding: 0
+  cursor: pointer
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 24px
+  height: 24px
+
+.sidebar__section
+  padding: 0
+
+.sidebar__list
+  list-style: none
+  margin: 0
+  padding: 0
+
+.sidebar__link
+  display: inline-flex
+  align-items: center
+  gap: 8px
+  width: 100%
+  text-decoration: none
+  padding: 12px 24px
+  color: v.$text-dark
+  border-left: 4px solid transparent
+  border-radius: 0
+  &:hover
+    background: rgba(0,0,0,0.04)
+
+.sidebar__icon
+  width: 24px
+  height: 24px
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  color: #A9A9A9
+
+  /* el svg ocupa el contenedor */
+  svg
+    width: 100%
+    height: 100%
+    display: block
+
+  /* fuerza a que todo relleno/traZo herede el color */
+  svg [fill]:not([fill="none"])
+    fill: currentColor !important
+  svg [stroke]:not([stroke="none"])
+    stroke: currentColor !important
+
+.sidebar__text
+  font-size: 14px
+  font-weight: 500
+  color: v.$text-dark
+
+// === Active State
+.sidebar__item.is-active .sidebar__link
+  background: rgba(72, 128, 255, 0.08)
+  border-left-color: v.$primary
+  .sidebar__text
+    color: v.$primary
+  .sidebar__icon
+    color: v.$primary
+
+.sidebar__icon--danger
+  color: v.$danger !important
+  svg [fill], svg [stroke]
+    fill: initial !important
+    stroke: initial !important
+
+.sidebar__text--danger
+  color: v.$danger !important

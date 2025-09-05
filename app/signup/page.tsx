@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Form } from "react-bootstrap";
+import DownArrowIcon from '@/assets/images/downArrow.svg';
 
 export default function SignupPage() {
     const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -100,13 +101,7 @@ export default function SignupPage() {
                                                 {/* Agregarle funcionalidad */}
                                                 <option value="">Select your industry</option>
                                             </select>
-                                            <Image
-                                                src="/DownArrow.svg"
-                                                alt=""
-                                                width={24}
-                                                height={24}
-                                                className="field__caret"
-                                            />
+                                            <DownArrowIcon/>
                                         </div>
                                     </div>
 
@@ -119,13 +114,7 @@ export default function SignupPage() {
                                                 {/* Agregarle funcionalidad */}
                                                 <option value="">Select country</option>
                                             </select>
-                                            <Image
-                                                src="/DownArrow.svg"
-                                                alt=""
-                                                width={24}
-                                                height={24}
-                                                className="field__caret"
-                                            />
+                                            <DownArrowIcon/>
                                         </div>
                                     </div>
 

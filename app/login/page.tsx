@@ -2,9 +2,9 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
-import { pattern, required, run } from "../../../shared/validation";
-import { emailRegex, passwordRegex } from "../../../shared/constants";
 import Image from "next/image";
+import { emailRegex, passwordRegex } from "../../shared/constants";
+import { pattern, required, run } from "../../shared/validation";
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');

@@ -1,7 +1,7 @@
 'use client';
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
+import DownArrowIcon from '@/assets/images/downArrow.svg';
 
 export default function QuestionaryPage() {
 
@@ -66,7 +66,7 @@ export default function QuestionaryPage() {
                                                         <option value="6-10">6–10 years</option>
                                                         <option value="10+">10+ years</option>
                                                     </select>
-                                                    <Image src="/DownArrow.svg" alt="" width={24} height={24} className="field__caret" />
+                                                    <DownArrowIcon/>
                                                 </div>
                                             </div>
 
@@ -140,7 +140,7 @@ export default function QuestionaryPage() {
                                                     <select id="years" className="field__input field__select" required defaultValue="">
                                                         <option value="" disabled>Please select</option>
                                                     </select>
-                                                    <Image src="/DownArrow.svg" alt="" width={24} height={24} className="field__caret" />
+                                                    <DownArrowIcon/>
                                                 </div>
                                             </div>
 
@@ -151,7 +151,7 @@ export default function QuestionaryPage() {
                                                     <select id="years" className="field__input field__select" required defaultValue="">
                                                         <option value="" disabled>Please select</option>
                                                     </select>
-                                                    <Image src="/DownArrow.svg" alt="" width={24} height={24} className="field__caret" />
+                                                    <DownArrowIcon/>
                                                 </div>
                                             </div>
 
@@ -162,7 +162,7 @@ export default function QuestionaryPage() {
                                                     <select id="years" className="field__input field__select" required defaultValue="">
                                                         <option value="" disabled>Please select</option>
                                                     </select>
-                                                    <Image src="/DownArrow.svg" alt="" width={24} height={24} className="field__caret" />
+                                                    <DownArrowIcon/>
                                                 </div>
                                             </div>
 
@@ -173,7 +173,7 @@ export default function QuestionaryPage() {
                                                     <select id="years" className="field__input field__select" required defaultValue="">
                                                         <option value="" disabled>Please select</option>
                                                     </select>
-                                                    <Image src="/DownArrow.svg" alt="" width={24} height={24} className="field__caret" />
+                                                    <DownArrowIcon/>
                                                 </div>
                                             </div>
                                         </div>
@@ -206,7 +206,7 @@ export default function QuestionaryPage() {
                                                     <select id="years" className="field__input field__select" required defaultValue="">
                                                         <option value="" disabled>Please select</option>
                                                     </select>
-                                                    <Image src="/DownArrow.svg" alt="" width={24} height={24} className="field__caret" />
+                                                    <DownArrowIcon/>
                                                 </div>
                                             </div>
 
