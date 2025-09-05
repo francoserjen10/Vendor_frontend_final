@@ -1,25 +1,62 @@
 @use "./styles/variables" as v
 
 .sidebar
+  box-sizing: border-box
   background: v.$surface
-  border-right: 1px solid #E9ECF3
-  height: 100vh
-  overflow: hiden
+  min-height: 100dvh
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  //padding-block: 24px
+  row-gap: 24px
+  padding: 24px 0
+  // Arreglar scrollbar
+  overflow-y: auto
+  scrollbar-width: none
+  -ms-overflow-style: none
+  &::-webkit-scrollbar
+    display: none
+
+.sidebar__header
+  display: flex
+  align-items: center
+  justify-content: space-between
+  align-items: stretch 
+  padding-inline: 24px
 
 .sidebar__sections
-  height: 100%
+  //height: 100%
+  flex: 1
   display: flex
   flex-direction: column
   justify-content: space-between
-  align-items: stretch
-  // ======= figma
-  //width: 200, 
-  //alignSelf: 'stretch', 
-  //flexDirection: 'column', 
-  //justifyContent: 'flex-start', 
-  //alignItems: 'flex-start', 
-  //gap: 24, 
-  //display: 'inline-flex'
+  //align-items: stretch
+
+.sidebar__brand
+  font-size: 20px
+  display: flex
+  align-items: baseline
+  gap: 2px
+
+.sidebar__brand-alo
+  color: v.$primary
+  font-weight: 700
+
+.sidebar__brand-manager
+  color: v.$text-dark
+  font-style: italic
+  font-weight: 200
+
+.sidebar__burger
+  background: none
+  border: none
+  padding: 0
+  cursor: pointer
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 24px
+  height: 24px
 
 .sidebar__section
   padding: 0
@@ -81,3 +118,6 @@
   svg [fill], svg [stroke]
     fill: initial !important
     stroke: initial !important
+
+.sidebar__text--danger
+  color: v.$danger !important
