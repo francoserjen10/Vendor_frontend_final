@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
-import DownArrowIcon from '@/assets/images/DownArrow.svg';
+import DownArrowIcon from '@/assets/images/downArrow.svg';
 
 export default function QuestionaryPage() {
 
