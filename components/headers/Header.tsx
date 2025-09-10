@@ -5,15 +5,30 @@ import NotificationBellActive from '@/assets/images/notificationBellActive.svg';
 import DownArrowSmall from '@/assets/images/downArrow-small.svg';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import CustomAvatar from '../CustomAvatar';
+import BurgerMenuIcon from '@/assets/images/burgerMenu.svg';
 
-export default function Header() {
+type HeaderProps = {
+    onBurgerClick: () => void;
+    isSidebarOpen: boolean;
+};
+
+export default function Header({ onBurgerClick, isSidebarOpen }: HeaderProps) {
 
     return (
         <>
-            <header className="app-header">
+            <header className="app-header" data-sidebar-open={isSidebarOpen? 'true' : undefined}>
                 <div className="app-header__inner">
                     {/* Left / Breadcrumb */}
                     <div className="app-header__left">
+                        {/* app-header__burger */}
+                        <button
+                            className="app-header__burger"
+                            aria-label="Toggle menu"
+                            type="button"
+                            onClick={onBurgerClick}
+                        >
+                            <BurgerMenuIcon />
+                        </button>
                         {/* En el proyecto viejo era un componente <Breadcrumbs />.
               Por ahora estático */}
                         <h3 className="app-header__breadcrumb">
@@ -21,7 +36,8 @@ export default function Header() {
                         </h3>
                     </div>
 
-                    <div className="app-header__right">
+                    {/* app-header__actions */}
+                    <div className="app-header__right app-header__actions">
                         <button className="btn btn--primary btn--sm"> New Order </button>
 
                         <div className="header-search">
