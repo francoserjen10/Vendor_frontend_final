@@ -19,6 +19,7 @@ import DownArrowSmall from '@/assets/images/downArrow-small.svg';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import CustomAvatar from "./CustomAvatar";
 import { useState } from "react";
+import Progress from "./headers/Progress";
 
 type Item = { href: string; label: string; icon: React.ReactNode; variant?: string };
 
@@ -167,7 +168,9 @@ export default function Sidebar({ hideMenu, isOpen, isMobile, onBurgerClick, onA
                             </div>
 
                             <div className="sidebar__overlay-actions">
-                                <button className="btn btn--primary btn--sm">New Order</button>
+                                {/* Progreso circular o boton new order */}
+                                {/* <button className="btn btn--primary btn--sm">New Order</button> */}
+                                    <Progress />
 
                                 <div className="header-search">
                                     <Search />
