@@ -6,6 +6,7 @@ import DownArrowSmall from '@/assets/images/downArrow-small.svg';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import CustomAvatar from '../CustomAvatar';
 import BurgerMenuIcon from '@/assets/images/burgerMenu.svg';
+import Progress from './Progress';
 
 type HeaderProps = {
     onBurgerClick: () => void;
@@ -16,7 +17,7 @@ export default function Header({ onBurgerClick, isSidebarOpen }: HeaderProps) {
 
     return (
         <>
-            <header className="app-header" data-sidebar-open={isSidebarOpen? 'true' : undefined}>
+            <header className="app-header" data-sidebar-open={isSidebarOpen ? 'true' : undefined}>
                 <div className="app-header__inner">
                     {/* Left / Breadcrumb */}
                     <div className="app-header__left">
@@ -38,8 +39,8 @@ export default function Header({ onBurgerClick, isSidebarOpen }: HeaderProps) {
 
                     {/* app-header__actions */}
                     <div className="app-header__right app-header__actions">
-                        <button className="btn btn--primary btn--sm"> New Order </button>
-
+                        {/* <button className="btn btn--primary btn--sm"> New Order </button> */}
+                        <Progress />
                         <div className="header-search">
                             <Search />
                             <input
