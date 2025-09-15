@@ -1,5 +1,6 @@
 'use client';
 import DownArrowIcon from '@/assets/images/downArrow.svg';
+import MainSelect from '../MainSelect';
 
 export default function OrdersFilters() {
     return (
@@ -13,49 +14,35 @@ export default function OrdersFilters() {
                     <div className="orders-filters__section-header">
                         <h3 id="filters-location-title" className="orders-filters__section-title">Location</h3>
                         {/* Aca tengo un svg */}
-                        <DownArrowIcon className="orders-filters__chevron" width={13} height={7} aria-hidden />
+                        <DownArrowIcon className="orders-filters__arrow" width={13} height={7} aria-hidden />
                     </div>
 
                     <div className="orders-filters__section-body">
-                        <div className="field field--select">
+                        <div className="field">
                             <label htmlFor="pickup" className="orders-filters__label">Pickup location</label>
-                            <div className="field__control">
-                                <select id="pickup" className="field__input field__select" defaultValue="" required>
-                                    <option value="">Location</option>
-                                    {/* TODO: llenar con locations reales */}
-                                    <option value="denia">Denia</option>
-                                    <option value="xabia">Xàbia</option>
-                                </select>
-                                {/* Tengo un svg tambien 
-                                downArrow.svg
-                                Podria poner un width y height para darle tama;o 1:1 a figma
-                                */}
-                                <DownArrowIcon className="field__chevron" width={24} height={24} aria-hidden />
-                            </div>
+                            <MainSelect
+                                options={['Denia', 'Xàbia']}
+                                value=""
+                                placeholder='Location'
+                                onChange={() => { }}
+                            />
                         </div>
 
-                        <div className="field field--select">
-                            <label htmlFor="return" className="orders-filters__label">Pickup location</label>
-                            <div className="field__control">
-                                <select id="return" className="field__input field__select" defaultValue="" required>
-                                    <option value="">Location</option>
-                                    {/* TODO: llenar con locations reales */}
-                                    <option value="denia">Denia</option>
-                                    <option value="xabia">Xàbia</option>
-                                </select>
-                                {/* Tengo un svg tambien 
-                                downArrow.svg
-                                Podria poner un width y height para darle tama;o 1:1 a figma
-                                */}
-                                <DownArrowIcon className="field__chevron" width={24} height={24} aria-hidden />
-                            </div>
+                        <div className="field">
+                            <label htmlFor="return" className="orders-filters__label">Return location</label>
+                            <MainSelect
+                                options={[]}
+                                value=""
+                                placeholder='Location'
+                                onChange={() => { }}
+                            />
                         </div>
                     </div>
                 </section>
                 <section className="orders-filters__section orders-filters__section--status" aria-labelledby="filters-status-title">
                     <div className="orders-filters__section-header">
                         <h3 id="filters-status-title" className="orders-filters__section-title">Status</h3>
-                        <DownArrowIcon className="orders-filters__chevron" width={13} height={7} aria-hidden />
+                        <DownArrowIcon className="orders-filters__arrow" width={13} height={7} aria-hidden />
                     </div>
                     <div className="orders-filters__section-body orders-filters__checks">
                         <div className="orders-filters__check">
@@ -108,7 +95,7 @@ export default function OrdersFilters() {
                 <section className="orders-filters__section orders-filters__section--status" aria-labelledby="filters-status-title">
                     <div className="orders-filters__section-header">
                         <h3 id="filters-status-title" className="orders-filters__section-title">Payment status</h3>
-                        <DownArrowIcon className="orders-filters__chevron" width={13} height={7} aria-hidden />
+                        <DownArrowIcon className="orders-filters__arrow" width={13} height={7} aria-hidden />
                     </div>
                     <div className="orders-filters__section-body orders-filters__checks">
                         <div className="orders-filters__check">
@@ -161,7 +148,7 @@ export default function OrdersFilters() {
                 <section className="orders-filters__section orders-filters__section--status" aria-labelledby="filters-status-title">
                     <div className="orders-filters__section-header">
                         <h3 id="filters-status-title" className="orders-filters__section-title">Date range</h3>
-                        <DownArrowIcon className="orders-filters__chevron" width={13} height={7} aria-hidden />
+                        <DownArrowIcon className="orders-filters__arrow" width={13} height={7} aria-hidden />
                     </div>
                     {/* FILTROS */}
                 </section>
