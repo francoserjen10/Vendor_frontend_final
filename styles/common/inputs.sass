@@ -27,6 +27,7 @@
   gap: 24px
 
 .field
+  position: relative
   width: 100%
   display: grid
   gap: 6px
@@ -44,6 +45,9 @@
     width: 100%
 
     .field__input
+      -webkit-appearance: none
+      -moz-appearance: none
+      appearance: none
       flex: 1 1 auto
       height: 100%
       border: 0
@@ -83,6 +87,79 @@
       > label
         position: relative
         z-index: 2
+      &:invalid
+        color: v.$placeholder
+
+.field--select .field__input
+  &:invalid
+    color: v.$placeholder
+  &:not(:invalid)
+    color: v.$text-dark
+
+.field__value
+  font-size: 16px
+  font-weight: 300
+  color: v.$text-dark
+
+.field__value.is-placeholder
+  color: v.$placeholder
+
+.field__arrow
+  position: absolute
+  right: 11px
+  top: 50%
+  transform: translateY(-50%)
+  width: 24px
+  height: 24px
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  color: v.$placeholder
+  transition: transform .15s ease
+
+.field__arrow.is-open
+  transform: translateY(-50%) rotate(180deg)
+  
+.select__dropdown
+  position: absolute
+  left: 0
+  right: 0
+  top: calc(100% + 6px)
+  max-height: 240px
+  overflow: auto
+  background: v.$surface
+  border: 1px solid v.$border
+  border-radius: 8px
+  box-shadow: 0 8px 16px rgba(0,0,0,.08)
+  z-index: 2000
+
+.select__dropdown--up
+  top: auto
+  bottom: calc(100% + 6px)
+
+.select__option
+  width: 100%
+  text-align: left
+  padding: 10px 12px
+  font-size: 16px
+  font-weight: 300
+  color: v.$text-dark
+  background: transparent
+  border: 0
+  outline: 0
+  cursor: pointer
+
+.select__option:hover
+  background: rgba(0,0,0,.04)
+
+.select__option.is-selected
+  background: rgba(72,128,255,.08)
+  color: v.$primary
+
+.select__empty
+  padding: 10px 12px
+  font-size: 14px
+  color: v.$placeholder
 
 /*=== checks ===*/
 .radio
