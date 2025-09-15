@@ -104,6 +104,67 @@ export default function OrdersFilters() {
                         </div>
                     </div>
                 </section>
+
+                <section className="orders-filters__section orders-filters__section--status" aria-labelledby="filters-status-title">
+                    <div className="orders-filters__section-header">
+                        <h3 id="filters-status-title" className="orders-filters__section-title">Payment status</h3>
+                        <DownArrowIcon className="orders-filters__chevron" width={13} height={7} aria-hidden />
+                    </div>
+                    <div className="orders-filters__section-body orders-filters__checks">
+                        <div className="orders-filters__check">
+                            <label className="orders-filters__checkbox main-checkbox">
+                                <input type="checkbox" className="form-check-input" defaultChecked />
+                                <span>Payment due</span>
+                            </label>
+                            {/* TODO: Cantidad de ordenes reales */}
+                            <span className="orders-filters__count">(0)</span>
+                        </div>
+
+                        <div className="orders-filters__check">
+                            <label className="orders-filters__checkbox main-checkbox">
+                                <input type="checkbox" className="form-check-input" defaultChecked />
+                                <span>Partially paid</span>
+                            </label>
+                            {/* TODO: Cantidad de ordenes reales */}
+                            <span className="orders-filters__count">(0)</span>
+                        </div>
+
+                        <div className="orders-filters__check">
+                            <label className="orders-filters__checkbox main-checkbox">
+                                <input type="checkbox" className="form-check-input" defaultChecked />
+                                <span>Paid</span>
+                            </label>
+                            {/* TODO: Cantidad de ordenes reales */}
+                            <span className="orders-filters__count">(0)</span>
+                        </div>
+
+                        <div className="orders-filters__check">
+                            <label className="orders-filters__checkbox main-checkbox">
+                                <input type="checkbox" className="form-check-input" defaultChecked />
+                                <span>Overpaid</span>
+                            </label>
+                            {/* TODO: Cantidad de ordenes reales */}
+                            <span className="orders-filters__count">(0)</span>
+                        </div>
+
+                        <div className="orders-filters__check">
+                            <label className="orders-filters__checkbox main-checkbox">
+                                <input type="checkbox" className="form-check-input" defaultChecked />
+                                <span>Process deposit</span>
+                            </label>
+                            {/* TODO: Cantidad de ordenes reales */}
+                            <span className="orders-filters__count">(0)</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section className="orders-filters__section orders-filters__section--status" aria-labelledby="filters-status-title">
+                    <div className="orders-filters__section-header">
+                        <h3 id="filters-status-title" className="orders-filters__section-title">Date range</h3>
+                        <DownArrowIcon className="orders-filters__chevron" width={13} height={7} aria-hidden />
+                    </div>
+                    {/* FILTROS */}
+                </section>
             </div>
         </aside>
     );
