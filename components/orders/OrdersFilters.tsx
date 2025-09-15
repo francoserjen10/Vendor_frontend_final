@@ -52,8 +52,58 @@ export default function OrdersFilters() {
                         </div>
                     </div>
                 </section>
-                {/* acá después van los controles de filtros */}
-                {/* Ej: status, date range, search, etc. */}
+                <section className="orders-filters__section orders-filters__section--status" aria-labelledby="filters-status-title">
+                    <div className="orders-filters__section-header">
+                        <h3 id="filters-status-title" className="orders-filters__section-title">Status</h3>
+                        <DownArrowIcon className="orders-filters__chevron" width={13} height={7} aria-hidden />
+                    </div>
+                    <div className="orders-filters__section-body orders-filters__checks">
+                        <div className="orders-filters__check">
+                            <label className="orders-filters__checkbox main-checkbox">
+                                <input type="checkbox" className="form-check-input" defaultChecked />
+                                <span>Draft</span>
+                            </label>
+                            {/* TODO: Cantidad de ordenes reales */}
+                            <span className="orders-filters__count">(0)</span>
+                        </div>
+
+                        <div className="orders-filters__check">
+                            <label className="orders-filters__checkbox main-checkbox">
+                                <input type="checkbox" className="form-check-input" defaultChecked />
+                                <span>Reserved</span>
+                            </label>
+                            {/* TODO: Cantidad de ordenes reales */}
+                            <span className="orders-filters__count">(0)</span>
+                        </div>
+
+                        <div className="orders-filters__check">
+                            <label className="orders-filters__checkbox main-checkbox">
+                                <input type="checkbox" className="form-check-input" defaultChecked />
+                                <span>Picked Up</span>
+                            </label>
+                            {/* TODO: Cantidad de ordenes reales */}
+                            <span className="orders-filters__count">(0)</span>
+                        </div>
+
+                        <div className="orders-filters__check">
+                            <label className="orders-filters__checkbox main-checkbox">
+                                <input type="checkbox" className="form-check-input" defaultChecked />
+                                <span>Returned</span>
+                            </label>
+                            {/* TODO: Cantidad de ordenes reales */}
+                            <span className="orders-filters__count">(0)</span>
+                        </div>
+
+                        <div className="orders-filters__check">
+                            <label className="orders-filters__checkbox main-checkbox">
+                                <input type="checkbox" className="form-check-input" defaultChecked />
+                                <span>Cancelled</span>
+                            </label>
+                            {/* TODO: Cantidad de ordenes reales */}
+                            <span className="orders-filters__count">(0)</span>
+                        </div>
+                    </div>
+                </section>
             </div>
         </aside>
     );
