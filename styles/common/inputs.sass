@@ -44,6 +44,9 @@
     width: 100%
 
     .field__input
+      -webkit-appearance: none
+      -moz-appearance: none
+      appearance: none
       flex: 1 1 auto
       height: 100%
       border: 0
@@ -83,6 +86,14 @@
       > label
         position: relative
         z-index: 2
+      &:invalid
+        color: v.$placeholder
+
+.field--select .field__input
+  &:invalid
+    color: v.$placeholder
+  &:not(:invalid)
+    color: v.$text-dark
 
 /*=== checks ===*/
 .radio
