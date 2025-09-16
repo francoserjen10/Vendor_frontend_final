@@ -1,5 +1,5 @@
+import { Filters } from '@/app/orders/page';
 import React from 'react'
-import { Filters } from './orders/OrdersFilters';
 // import { statusData } from '@/shared/constants';
 
 type StatusKey = 'status' | 'payment_status';
