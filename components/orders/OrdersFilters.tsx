@@ -1,8 +1,48 @@
 'use client';
 import DownArrowIcon from '@/assets/images/downArrow.svg';
 import MainSelect from '../MainSelect';
+import StatusFilters from '../StatusFilters';
+import React, { useState } from 'react';
+
+export type Filters = {
+    location: { pick_up: string; return: string };
+    status: string[];
+    payment_status: string[];
+    date_range: { start: string; end: string };
+};
 
 export default function OrdersFilters() {
+
+    const [filters, setFilters] = React.useState<Filters>({
+        location: {
+            pick_up: '',
+            return: ''
+        },
+        status: [],
+        payment_status: [],
+        date_range: {
+            start: '',
+            end: ''
+        }
+    });
+    const [statusData, setStatusData] = useState({
+        draft: 0,
+        reserved: 0,
+        'picked up': 0,
+        returned: 0,
+        cancelled: 0
+    })
+    const [paymentStatusData, setPaymentsStatusData] = useState({
+        'payment due': 0,
+        'partially paid': 0,
+        paid: 0,
+        overpaid: 0,
+        'process deposit': 0
+    })
+
+    const statuses = ['draft', 'reserved', 'picked up', 'returned', 'cancelled'];
+    const paymentStatuses = ['payment due', 'partially paid', 'paid', 'overpaid', 'process deposit']
+
     return (
         <aside className="orders-filters" aria-labelledby="orders-filters-title">
             <div className="orders-filters__header">
@@ -10,10 +50,9 @@ export default function OrdersFilters() {
             </div>
 
             <div className="orders-filters__body">
-                <section className="orders-filters__section orders-filters__section--location" aria-labelledby="filters-location-title">
+                <section className="orders-filters__section" aria-labelledby="filters-location-title">
                     <div className="orders-filters__section-header">
                         <h3 id="filters-location-title" className="orders-filters__section-title">Location</h3>
-                        {/* Aca tengo un svg */}
                         <DownArrowIcon className="orders-filters__arrow" width={13} height={7} aria-hidden />
                     </div>
 
@@ -39,110 +78,20 @@ export default function OrdersFilters() {
                         </div>
                     </div>
                 </section>
-                <section className="orders-filters__section orders-filters__section--status" aria-labelledby="filters-status-title">
+                <section className="orders-filters__section" aria-labelledby="filters-status-title">
                     <div className="orders-filters__section-header">
                         <h3 id="filters-status-title" className="orders-filters__section-title">Status</h3>
                         <DownArrowIcon className="orders-filters__arrow" width={13} height={7} aria-hidden />
                     </div>
-                    <div className="orders-filters__section-body orders-filters__checks">
-                        <div className="orders-filters__check">
-                            <label className="orders-filters__checkbox main-checkbox">
-                                <input type="checkbox" className="form-check-input" defaultChecked />
-                                <span>Draft</span>
-                            </label>
-                            {/* TODO: Cantidad de ordenes reales */}
-                            <span className="orders-filters__count">(0)</span>
-                        </div>
-
-                        <div className="orders-filters__check">
-                            <label className="orders-filters__checkbox main-checkbox">
-                                <input type="checkbox" className="form-check-input" defaultChecked />
-                                <span>Reserved</span>
-                            </label>
-                            {/* TODO: Cantidad de ordenes reales */}
-                            <span className="orders-filters__count">(0)</span>
-                        </div>
-
-                        <div className="orders-filters__check">
-                            <label className="orders-filters__checkbox main-checkbox">
-                                <input type="checkbox" className="form-check-input" defaultChecked />
-                                <span>Picked Up</span>
-                            </label>
-                            {/* TODO: Cantidad de ordenes reales */}
-                            <span className="orders-filters__count">(0)</span>
-                        </div>
-
-                        <div className="orders-filters__check">
-                            <label className="orders-filters__checkbox main-checkbox">
-                                <input type="checkbox" className="form-check-input" defaultChecked />
-                                <span>Returned</span>
-                            </label>
-                            {/* TODO: Cantidad de ordenes reales */}
-                            <span className="orders-filters__count">(0)</span>
-                        </div>
-
-                        <div className="orders-filters__check">
-                            <label className="orders-filters__checkbox main-checkbox">
-                                <input type="checkbox" className="form-check-input" defaultChecked />
-                                <span>Cancelled</span>
-                            </label>
-                            {/* TODO: Cantidad de ordenes reales */}
-                            <span className="orders-filters__count">(0)</span>
-                        </div>
-                    </div>
+                    <StatusFilters className='orders-filters__section-body' statusArray={statuses} filters={filters} setFilters={setFilters} statusData={statusData} status_key={'status'} />
                 </section>
 
-                <section className="orders-filters__section orders-filters__section--status" aria-labelledby="filters-status-title">
+                <section className="orders-filters__section" aria-labelledby="filters-statusPayments-title">
                     <div className="orders-filters__section-header">
                         <h3 id="filters-status-title" className="orders-filters__section-title">Payment status</h3>
                         <DownArrowIcon className="orders-filters__arrow" width={13} height={7} aria-hidden />
                     </div>
-                    <div className="orders-filters__section-body orders-filters__checks">
-                        <div className="orders-filters__check">
-                            <label className="orders-filters__checkbox main-checkbox">
-                                <input type="checkbox" className="form-check-input" defaultChecked />
-                                <span>Payment due</span>
-                            </label>
-                            {/* TODO: Cantidad de ordenes reales */}
-                            <span className="orders-filters__count">(0)</span>
-                        </div>
-
-                        <div className="orders-filters__check">
-                            <label className="orders-filters__checkbox main-checkbox">
-                                <input type="checkbox" className="form-check-input" defaultChecked />
-                                <span>Partially paid</span>
-                            </label>
-                            {/* TODO: Cantidad de ordenes reales */}
-                            <span className="orders-filters__count">(0)</span>
-                        </div>
-
-                        <div className="orders-filters__check">
-                            <label className="orders-filters__checkbox main-checkbox">
-                                <input type="checkbox" className="form-check-input" defaultChecked />
-                                <span>Paid</span>
-                            </label>
-                            {/* TODO: Cantidad de ordenes reales */}
-                            <span className="orders-filters__count">(0)</span>
-                        </div>
-
-                        <div className="orders-filters__check">
-                            <label className="orders-filters__checkbox main-checkbox">
-                                <input type="checkbox" className="form-check-input" defaultChecked />
-                                <span>Overpaid</span>
-                            </label>
-                            {/* TODO: Cantidad de ordenes reales */}
-                            <span className="orders-filters__count">(0)</span>
-                        </div>
-
-                        <div className="orders-filters__check">
-                            <label className="orders-filters__checkbox main-checkbox">
-                                <input type="checkbox" className="form-check-input" defaultChecked />
-                                <span>Process deposit</span>
-                            </label>
-                            {/* TODO: Cantidad de ordenes reales */}
-                            <span className="orders-filters__count">(0)</span>
-                        </div>
-                    </div>
+                    <StatusFilters className='orders-filters__section-body' statusArray={paymentStatuses} filters={filters} setFilters={setFilters} statusData={paymentStatusData} status_key={'payment_status'} checked={filters.payment_status} />
                 </section>
 
                 <section className="orders-filters__section orders-filters__section--status" aria-labelledby="filters-status-title">
