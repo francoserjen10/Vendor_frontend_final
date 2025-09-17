@@ -1,5 +1,6 @@
 'use client';
 import DownArrowIcon from '@/assets/images/downArrow.svg';
+import DateRangePicker from '@/components/DateRangePicker';
 import MainSelect from '@/components/MainSelect';
 import StatusFilters from '@/components/StatusFilters';
 import React, { useState } from 'react';
@@ -8,7 +9,7 @@ export type Filters = {
     location: { pick_up: string; return: string };
     status: string[];
     payment_status: string[];
-    date_range: { start: string; end: string };
+    date_range: { start: Date | null; end: Date | null };
 };
 
 export default function OrdersPage() {
@@ -21,8 +22,8 @@ export default function OrdersPage() {
         status: [],
         payment_status: [],
         date_range: {
-            start: '',
-            end: ''
+            start: null,
+            end: null
         }
     });
     const [statusData, setStatusData] = useState({
@@ -101,6 +102,12 @@ export default function OrdersPage() {
                                 <h3 id="filters-status-title" className="orders-filters__section-title">Date range</h3>
                                 <DownArrowIcon className="orders-filters__arrow" width={13} height={7} aria-hidden />
                             </div>
+                            <DateRangePicker
+                                startDate={filters.date_range.start}
+                                endDate={filters.date_range.end}
+                                onChange={({ start, end }) =>
+                                    setFilters(prev => ({ ...prev, date_range: { start, end } }))}
+                            />
                         </section>
                     </div>
                 </aside>
