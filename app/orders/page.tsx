@@ -42,7 +42,10 @@ export default function OrdersPage() {
     })
 
     const statuses = ['draft', 'reserved', 'picked up', 'returned', 'cancelled'];
-    const paymentStatuses = ['payment due', 'partially paid', 'paid', 'overpaid', 'process deposit']
+    const paymentStatuses = ['payment due', 'partially paid', 'paid', 'overpaid', 'process deposit'];
+    const [activeTab, setActiveTab] = useState<OrdersTab>();
+    const tabs = ['All', 'Upcoming', 'Late', 'With Shortage'] as const;
+    type OrdersTab = typeof tabs[number];
 
     return (
         <section className="orders">
@@ -112,8 +115,36 @@ export default function OrdersPage() {
                     </div>
                 </aside>
                 <div className="orders__content">
-                    {/* acá después agregamos: título+descripción+New Order, 
-              filtro centrado, 4 cards de métricas y la tabla */}
+                    <header
+                        className="orders__header"
+                        aria-labelledby="orders-title"
+                        aria-describedby="orders-subtitle"
+                    >
+                        <div className="orders__headings">
+                            <h1 id="orders-title" className="orders__title">Orders</h1>
+                            <p id="orders-subtitle" className="orders__subtitle">
+                                View and manage all rental orders, including status updates, rental periods, and customer details
+                            </p>
+                        </div>
+                        <button type="button" className="btn btn--primary btn--sm">
+                            New Order
+                        </button>
+                    </header>
+
+                    <nav className="orders-tabs" role="tablist" aria-label="Order sets">
+                        {tabs.map((tab) => (
+                            <button
+                                key={tab}
+                                type='button'
+                                role="tab"
+                                aria-selected={activeTab === tab}
+                                className={`orders-tab ${activeTab === tab ? 'is-active' : ''}`}
+                                onClick={() => setActiveTab(tab)}
+                            >
+                                {tab}
+                            </button>
+                        ))}
+                    </nav>
                 </div>
             </div>
         </section>

@@ -17,7 +17,6 @@
   row-gap: 16px
 
 .orders-filters__header
-  //height: 27px
   padding: 0 24px
   display: inline-flex
   align-items: center
@@ -78,3 +77,79 @@
   color: v.$text-dark
   font-size: 14px
   font-weight: 400
+
+.orders__content
+  width: 100%
+  display: flex
+  flex-direction: column
+  gap: 24px
+  align-items: stretch
+
+.orders__header
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  justify-content: flex-start
+  gap: 24px
+
+.orders__headings
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  gap: 6px
+
+.orders__title
+  margin: 0
+  color: v.$text-dark
+  font-size: 36px
+  font-weight: 700
+
+.orders__subtitle
+  margin: 0
+  color: v.$text-dark
+  font-size: 18px
+  font-weight: 400
+
+.orders-tabs
+  display: inline-flex
+  gap: 0
+  padding: 0
+  background: v.$surface
+  border-radius: 20px
+  //flex-wrap: wrap
+  width: max-content
+  max-width: 100%
+  overflow: hidden
+  white-space: nowrap
+  flex-wrap: nowrap
+  margin-inline: auto 
+
+.orders-tab
+  width: 140px
+  padding: 8px 24px
+  border: 0
+  background: transparent
+  border-radius: 20px
+  color: #7B7B7B
+  font-size: 16px
+  font-weight: 300
+  line-height: 1
+  text-align: center
+  cursor: pointer
+  transition: background-color .15s ease, color .15s ease, transform .08s ease
+
+  &:hover
+    transform: translateY(-1px)
+
+  &:active
+    transform: translateY(0)
+
+  &:focus-visible
+    outline: 2px solid rgba(72,128,255,.35)
+    outline-offset: 2px
+    border-radius: 20px
+  
+.orders-tab.is-active,
+.orders-tab[aria-selected="true"]
+  background: v.$primary
+  color: v.$surface
