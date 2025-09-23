@@ -87,13 +87,14 @@
   row-gap: 16px
 
 .orders-filters__section-body.collapsible
+  overflow: visible
   display: grid
   grid-template-rows: 1fr
   transition: grid-template-rows .22s ease, opacity .18s ease
   opacity: 1
 
   .collapsible__inner
-    overflow: hidden
+    overflow: visible
 
 .orders-filters__section[data-open="false"] .orders-filters__section-body.collapsible
   grid-template-rows: 0fr
