@@ -160,26 +160,53 @@ th.col-select
   align-items: center
   gap: 16px
 
-  .sort
-    position: relative
+.sort-arrows
+  display: inline-flex
+  flex-direction: column
+  align-items: center
+  gap: 4px
+  width: 11px
+  min-width: 11px
+
+.sort-arrow
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  width: 11px
+  height: 5px
+  padding: 0
+  border: 0
+  background: transparent
+  cursor: pointer
+  color: #595959
+  opacity: .9
+  line-height: 0
+  transition: opacity .12s ease, color .12s ease, transform .12s ease
+  &:hover
+    opacity: 1
+    &.is-active
+    color: #202224
+    opacity: 1
+
+  &:disabled
+    opacity: .4
+    cursor: not-allowed
+
+  svg
     width: 11px
-    height: 12px
-    display: inline-block
-    &::before, &::after
-      content: ""
-      position: absolute
-      left: 0
-      right: 0
-      margin: 0 auto
-      border-left: 5.5px solid transparent
-      border-right: 5.5px solid transparent
-    &::before
-      top: 0
-      border-bottom: 5px solid #595959
-      transform: rotate(180deg)
-    &::after
-      bottom: 0
-      border-top: 5px solid #595959
+    height: 5px
+    display: block
+  
+  svg [fill]:not([fill="none"]), svg[fill]:not([fill="none"])
+    fill: currentColor
+  svg [stroke]:not([stroke="none"]), svg[stroke]:not([stroke="none"])
+    stroke: currentColor
+
+.sort-arrow--up svg
+  transform: rotate(180deg)
+
+.sort-arrow--down svg
+  transform: none
 
 .td-name
   display: inline-flex

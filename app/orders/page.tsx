@@ -9,6 +9,7 @@ import StatusFilters from '@/components/StatusFilters';
 import React, { useState } from 'react';
 import FilterSection from '@/components/FilterSection';
 import PaginationRows from '@/components/PaginationRows';
+import SortArrows from '@/components/SortArrows';
 
 export type Filters = {
     location: { pick_up: string; return: string };
@@ -60,6 +61,10 @@ export default function OrdersPage() {
     const [page, setPage] = useState<number | null>(null);
     const [take, setTake] = useState<number | null>(10);
     const [itemsCount, setItemsCount] = useState<number | null>(0);
+    const [sort, setSort] = useState<{ name: "ASC" | "DESC"; price: "ASC" | "DESC" }>({
+        name: 'ASC',
+        price: 'ASC',
+    });
 
     const statuses = ['draft', 'reserved', 'picked up', 'returned', 'cancelled'];
     const paymentStatuses = ['payment due', 'partially paid', 'paid', 'overpaid', 'process deposit'];
@@ -239,7 +244,10 @@ export default function OrdersPage() {
                                         <th className="col-name">
                                             <div className="th-with-sort">
                                                 <span>Name</span>
-                                                <span className="sort" aria-hidden />
+                                                <SortArrows
+                                                    value={sort.name}
+                                                    onChange={(value) => setSort({ ...sort, name: value })}
+                                                />
                                             </div>
                                         </th>
 
@@ -249,7 +257,10 @@ export default function OrdersPage() {
                                         <th className="col-price">
                                             <div className="th-with-sort">
                                                 <span>Price</span>
-                                                <span className="sort" aria-hidden />
+                                                <SortArrows
+                                                    value={sort.name}
+                                                    onChange={(value) => setSort({ ...sort, name: value })}
+                                                />
                                             </div>
                                         </th>
 
