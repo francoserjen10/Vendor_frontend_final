@@ -1,5 +1,4 @@
 'use client';
-import DownArrowIcon from '@/assets/images/downArrow.svg';
 import OrderIcon from '@/assets/images/orders.svg';
 import OrderListIcon from '@/assets/images/orderlist.svg';
 import DueIcon from '@/assets/images/due.svg';
@@ -8,6 +7,7 @@ import DateRangePicker from '@/components/DateRangePicker';
 import MainSelect from '@/components/MainSelect';
 import StatusFilters from '@/components/StatusFilters';
 import React, { useState } from 'react';
+import FilterSection from '@/components/FilterSection';
 
 export type Filters = {
     location: { pick_up: string; return: string };
@@ -82,64 +82,60 @@ export default function OrdersPage() {
                     </div>
 
                     <div className="orders-filters__body">
-                        <section className="orders-filters__section" aria-labelledby="filters-location-title">
-                            <div className="orders-filters__section-header">
-                                <h3 id="filters-location-title" className="orders-filters__section-title">Location</h3>
-                                <DownArrowIcon className="orders-filters__arrow" width={13} height={7} aria-hidden />
+                        <FilterSection id='filters-location' title='Location' defaultOpen={true}>
+                            <div className="field">
+                                <label htmlFor="pickup" className="orders-filters__label">Pickup location</label>
+                                <MainSelect
+                                    options={['Denia', 'Xàbia']}
+                                    value=""
+                                    placeholder='Location'
+                                    onChange={() => { }}
+                                />
                             </div>
 
-                            <div className="orders-filters__section-body">
-                                <div className="field">
-                                    <label htmlFor="pickup" className="orders-filters__label">Pickup location</label>
-                                    <MainSelect
-                                        options={['Denia', 'Xàbia']}
-                                        value=""
-                                        placeholder='Location'
-                                        onChange={() => { }}
-                                    />
-                                </div>
+                            <div className="field">
+                                <label htmlFor="return" className="orders-filters__label">Return location</label>
+                                <MainSelect
+                                    options={[]}
+                                    value=""
+                                    placeholder='Location'
+                                    onChange={() => { }}
+                                />
+                            </div>
+                        </FilterSection>
 
-                                <div className="field">
-                                    <label htmlFor="return" className="orders-filters__label">Return location</label>
-                                    <MainSelect
-                                        options={[]}
-                                        value=""
-                                        placeholder='Location'
-                                        onChange={() => { }}
-                                    />
-                                </div>
-                            </div>
-                        </section>
-                        <section className="orders-filters__section" aria-labelledby="filters-status-title">
-                            <div className="orders-filters__section-header">
-                                <h3 id="filters-status-title" className="orders-filters__section-title">Status</h3>
-                                <DownArrowIcon className="orders-filters__arrow" width={13} height={7} aria-hidden />
-                            </div>
-                            <StatusFilters className='orders-filters__section-body' statusArray={statuses} filters={filters} setFilters={setFilters} statusData={statusData} status_key={'status'} />
-                        </section>
+                        <FilterSection id='filters-status' title='Status' defaultOpen={true}>
+                            <StatusFilters
+                                className='orders-filters__section-body'
+                                statusArray={statuses}
+                                filters={filters}
+                                setFilters={setFilters}
+                                statusData={statusData}
+                                status_key={'status'} />
+                        </FilterSection>
 
-                        <section className="orders-filters__section" aria-labelledby="filters-statusPayments-title">
-                            <div className="orders-filters__section-header">
-                                <h3 id="filters-status-title" className="orders-filters__section-title">Payment status</h3>
-                                <DownArrowIcon className="orders-filters__arrow" width={13} height={7} aria-hidden />
-                            </div>
-                            <StatusFilters className='orders-filters__section-body' statusArray={paymentStatuses} filters={filters} setFilters={setFilters} statusData={paymentStatusData} status_key={'payment_status'} checked={filters.payment_status} />
-                        </section>
+                        <FilterSection id='filters-ayments' title='Payment status' defaultOpen={true}>
+                            <StatusFilters
+                                className='orders-filters__section-body'
+                                statusArray={paymentStatuses}
+                                filters={filters}
+                                setFilters={setFilters}
+                                statusData={paymentStatusData}
+                                status_key={'payment_status'}
+                                checked={filters.payment_status}
+                            />
+                        </FilterSection>
 
-                        <section className="orders-filters__section orders-filters__section--status" aria-labelledby="filters-status-title">
-                            <div className="orders-filters__section-header">
-                                <h3 id="filters-status-title" className="orders-filters__section-title">Date range</h3>
-                                <DownArrowIcon className="orders-filters__arrow" width={13} height={7} aria-hidden />
-                            </div>
+                        <FilterSection id='filters-dateRange' title='Date range' defaultOpen={true}>
                             <DateRangePicker
                                 startDate={filters.date_range.start}
                                 endDate={filters.date_range.end}
                                 onChange={({ start, end }) =>
                                     setFilters(prev => ({ ...prev, date_range: { start, end } }))}
                             />
-                        </section>
+                        </FilterSection>
                     </div>
-                </aside>
+                </aside >
                 <div className="orders__content">
                     <header
                         className="orders__header"

@@ -53,6 +53,10 @@
   row-gap: 12px
 
 .orders-filters__section-header
+  background: transparent
+  border: 0
+  padding: 0
+  width: 100%
   display: inline-flex
   align-items: flex-start
   justify-content: space-between
@@ -67,15 +71,34 @@
 .orders-filters__arrow
   transform: rotate(180deg)
   color: v.$placeholder
+  transition: transform .2s ease
+  transform: rotate(180deg)
   svg
     width: 100%
     height: 100%
     display: block
     
+.orders-filters__section-header[aria-expanded="true"] .orders-filters__arrow
+  transform: rotate(0deg)
+  
 .orders-filters__section-body
   display: flex
   flex-direction: column
   row-gap: 16px
+
+.orders-filters__section-body.collapsible
+  display: grid
+  grid-template-rows: 1fr
+  transition: grid-template-rows .22s ease, opacity .18s ease
+  opacity: 1
+
+  .collapsible__inner
+    overflow: hidden
+
+.orders-filters__section[data-open="false"] .orders-filters__section-body.collapsible
+  grid-template-rows: 0fr
+  opacity: 0
+  pointer-events: none
 
 .orders-filters__field
   display: flex
@@ -126,7 +149,6 @@
   padding: 0
   background: v.$surface
   border-radius: 20px
-  //flex-wrap: wrap
   width: max-content
   max-width: 100%
   overflow: hidden
