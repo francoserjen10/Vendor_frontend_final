@@ -8,6 +8,7 @@ import MainSelect from '@/components/MainSelect';
 import StatusFilters from '@/components/StatusFilters';
 import React, { useState } from 'react';
 import FilterSection from '@/components/FilterSection';
+import PaginationRows from '@/components/PaginationRows';
 
 export type Filters = {
     location: { pick_up: string; return: string };
@@ -53,7 +54,12 @@ export default function OrdersPage() {
         'process deposit': 0
     })
     const [activeTab, setActiveTab] = useState<OrdersTab>();
-    const [selectedIds, setSelectedIds] = React.useState<string[]>([]);
+    const [selectedIds, setSelectedIds] = useState<string[]>([]);
+
+    //===================PAGINATION==================
+    const [page, setPage] = useState<number | null>(null);
+    const [take, setTake] = useState<number | null>(10);
+    const [itemsCount, setItemsCount] = useState<number | null>(0);
 
     const statuses = ['draft', 'reserved', 'picked up', 'returned', 'cancelled'];
     const paymentStatuses = ['payment due', 'partially paid', 'paid', 'overpaid', 'process deposit'];
@@ -302,6 +308,12 @@ export default function OrdersPage() {
                                 </tbody>
                             </table>
                         </div>
+                        <PaginationRows
+                            items_count={78}           // total real
+                            page={page}                // tu estado de página
+                            onPageChange={setPage}
+                            onTakeChange={setTake}
+                        />
                     </section >
                 </div>
             </section >
