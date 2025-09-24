@@ -12,6 +12,8 @@ type MainSelectProps = {
     disabled?: boolean;
     className?: string;
     placeholder?: string;
+    id?: string;
+    label?: string;
 };
 
 export default function MainSelect({
@@ -23,7 +25,9 @@ export default function MainSelect({
     maxWidth,
     disabled = false,
     className = '',
-    placeholder = 'Select an option'
+    placeholder = 'Select an option',
+    id,
+    label,
 }: MainSelectProps) {
 
     //===================MENU SETTINGS===============
@@ -72,12 +76,18 @@ export default function MainSelect({
         >
             <button
                 type="button"
+                id={id}
                 className="field__control field__control--select"
                 onClick={toggleDropdown}
                 disabled={disabled}
                 aria-haspopup="listbox"
                 aria-expanded={isOpen}
             >
+                {label && (
+                    <div className="field__label">
+                        <label htmlFor={id}>{label}</label>
+                    </div>
+                )}
                 <span className={`field__value ${isPlaceholder ? 'is-placeholder' : ''}`}>
                     {value || placeholder}
                 </span>
