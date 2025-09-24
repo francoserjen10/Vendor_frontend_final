@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import ShowPassIcon from '@/assets/images/icons/showPass.svg';
+import DoNotShowPassIcon from '@/assets/images/icons/doNotShowPass.svg';
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 
@@ -68,15 +70,15 @@ export default function SignupPage() {
                                                 onClick={togglePasswordVisibility}
                                             >
                                                 {showPassword ? (
-                                                    <Image
-                                                        src="./doNotShowPass.svg"
+                                                    <DoNotShowPassIcon
+                                                        // src="./doNotShowPass.svg"
                                                         alt="Hide password"
                                                         width={20}
                                                         height={20}
                                                     />
                                                 ) : (
-                                                    <Image
-                                                        src="./showPass.svg"
+                                                    <ShowPassIcon
+                                                        //src="./showPass.svg"
                                                         alt="Show password"
                                                         width={20}
                                                         height={20}
@@ -103,15 +105,15 @@ export default function SignupPage() {
                                                 onClick={toggleConfirmPasswordVisibility}
                                             >
                                                 {showConfirmPassword ? (
-                                                    <Image
-                                                        src="./doNotShowPass.svg"
+                                                    <DoNotShowPassIcon
+                                                        // src="./doNotShowPass.svg"
                                                         alt="Hide password"
                                                         width={20}
                                                         height={20}
                                                     />
                                                 ) : (
-                                                    <Image
-                                                        src="./showPass.svg"
+                                                    <ShowPassIcon
+                                                        //src="./showPass.svg"
                                                         alt="Show password"
                                                         width={20}
                                                         height={20}

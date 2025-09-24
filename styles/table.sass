@@ -329,6 +329,36 @@ th.col-select
     opacity: .7
     transform: translateX(-.5px)
 
+.icon-btn
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  padding: 5px
+  background: v.$surface
+  border: 1px solid #D6D6D6
+  border-radius: 4px
+  transition: background-color .12s ease, border-color .12s ease, transform .08s ease
+  color: v.$primary !important 
+
+  &:hover
+    background: #FAFBFD
+    border-color: #CFD3DF
+
+  &:active
+    transform: translateY(0.5px)
+
+  &:focus-visible
+    outline: 2px solid rgba(72,128,255,.35)
+    outline-offset: 2px
+
+.icon-btn__svg [fill]:not([fill="none"]),
+.icon-btn__svg[fill]:not([fill="none"])
+  fill: currentColor !important
+
+.icon-btn__svg [stroke]:not([stroke="none"]),
+.icon-btn__svg[stroke]:not([stroke="none"])
+  stroke: currentColor !important
+
 .pager-icon
   width: 7.41px
   height: 11.52px
@@ -345,3 +375,19 @@ th.col-select
 
 .mirrored
   transform: scaleX(-1)
+
+.orders-list
+  &::-webkit-scrollbar
+    height: 6px
+    width: 6px
+  &::-webkit-scrollbar-track
+    background: #F5F6FA
+    border-radius: 10px
+  &::-webkit-scrollbar-thumb
+    background: #D7D7D7
+    border-radius: 10px
+  &:hover::-webkit-scrollbar-thumb
+    background: #cfcfcf
+
+  scrollbar-color: #D7D7D7 #F5F6FA
+  scrollbar-width: thin

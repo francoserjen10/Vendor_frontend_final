@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import Image from "next/image";
+import ShowPassIcon from '@/assets/images/icons/showPass.svg';
+import DoNotShowPassIcon from '@/assets/images/icons/doNotShowPass.svg';
 import { emailRegex, passwordRegex } from "../../shared/constants";
 import { pattern, required, run } from "../../shared/validation";
 
@@ -237,15 +239,15 @@ export default function LoginPage() {
                                                         onClick={togglePasswordVisibility}
                                                     >
                                                         {showPassword ? (
-                                                            <Image
-                                                                src="./doNotShowPass.svg"
+                                                            <DoNotShowPassIcon
+                                                                //src="./doNotShowPass.svg"
                                                                 alt="Hide password"
                                                                 width={20}
                                                                 height={20}
                                                             />
                                                         ) : (
-                                                            <Image
-                                                                src="./showPass.svg"
+                                                            <ShowPassIcon
+                                                                //src="./showPass.svg"
                                                                 alt="Show password"
                                                                 width={20}
                                                                 height={20}
@@ -435,15 +437,15 @@ export default function LoginPage() {
                                                         onClick={togglePasswordVisibility}
                                                     >
                                                         {showPassword ? (
-                                                            <Image
-                                                                src="./doNotShowPass.svg"
+                                                            <DoNotShowPassIcon
+                                                                // src="./doNotShowPass.svg"
                                                                 alt="Hide password"
                                                                 width={20}
                                                                 height={20}
                                                             />
                                                         ) : (
-                                                            <Image
-                                                                src="./showPass.svg"
+                                                            <ShowPassIcon
+                                                                //src="./showPass.svg"
                                                                 alt="Show password"
                                                                 width={20}
                                                                 height={20}

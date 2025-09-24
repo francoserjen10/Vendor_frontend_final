@@ -3,6 +3,7 @@ import OrderIcon from '@/assets/images/orders.svg';
 import OrderListIcon from '@/assets/images/orderlist.svg';
 import DueIcon from '@/assets/images/due.svg';
 import DocumentIcon from '@/assets/images/document.svg';
+import ShowPassIcon from '@/assets/images/icons/showPass.svg';
 import DateRangePicker from '@/components/DateRangePicker';
 import MainSelect from '@/components/MainSelect';
 import StatusFilters from '@/components/StatusFilters';
@@ -312,7 +313,13 @@ export default function OrdersPage() {
 
                                         <td className="col-actions">
                                             <button type="button" className="icon-btn" aria-label="View">
-                                                <span className="icon-btn__glyph" aria-hidden />
+                                                <ShowPassIcon
+                                                    //src="/showPass.svg"
+                                                    alt="view order"
+                                                    width={14}
+                                                    height={14}
+                                                    className='icon-btn__svg'
+                                                />
                                             </button>
                                         </td>
                                     </tr>
@@ -320,8 +327,8 @@ export default function OrdersPage() {
                             </table>
                         </div>
                         <PaginationRows
-                            items_count={78}           // total real
-                            page={page}                // tu estado de página
+                            items_count={78}
+                            page={page}
                             onPageChange={setPage}
                             onTakeChange={setTake}
                         />
