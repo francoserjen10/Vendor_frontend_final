@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
-import DownArrowIcon from '@/assets/images/downArrow.svg';
+import MainSelect from "@/components/MainSelect";
 
 export default function QuestionaryPage() {
 
@@ -57,17 +57,14 @@ export default function QuestionaryPage() {
                                         <div className="container__questionary">
                                             <div className="field questionary__group">
                                                 <p className="questionary__label">How many years have you been in business?</p>
-                                                <div className="field__control field__control--select">
-                                                    {/* Darle funcionalidad*/}
-                                                    <select id="years" className="field__input field__select" required defaultValue="">
-                                                        <option value="" disabled>Please select</option>
-                                                        <option value="0-1">0–1 years</option>
-                                                        <option value="2-5">2–5 years</option>
-                                                        <option value="6-10">6–10 years</option>
-                                                        <option value="10+">10+ years</option>
-                                                    </select>
-                                                    <DownArrowIcon/>
-                                                </div>
+                                                <MainSelect
+                                                    id="years"
+                                                    //label="Select your industry"
+                                                    options={['0–1 years', '2–5 years', '6–10 years', '10+ years']}
+                                                    value=""
+                                                    onChange={(val) => console.log(val)}
+                                                    placeholder="Please select"
+                                                />
                                             </div>
 
                                             <div className="field questionary__group">
@@ -135,46 +132,50 @@ export default function QuestionaryPage() {
                                         <div className="container__questionary">
                                             <div className="field questionary__group">
                                                 <p className="questionary__label">What is your industry?</p>
-                                                <div className="field__control field__control--select">
-                                                    {/* Darle funcionalidad*/}
-                                                    <select id="years" className="field__input field__select" required defaultValue="">
-                                                        <option value="" disabled>Please select</option>
-                                                    </select>
-                                                    <DownArrowIcon/>
-                                                </div>
+                                                <MainSelect
+                                                    id="questionart-industry"
+                                                    //label=""
+                                                    options={[]}
+                                                    value=""
+                                                    onChange={(val) => console.log(val)}
+                                                    placeholder="Please select"
+                                                />
                                             </div>
 
                                             <div className="field questionary__group">
                                                 <p className="questionary__label">What products do you rent out?</p>
-                                                <div className="field__control field__control--select">
-                                                    {/* Darle funcionalidad*/}
-                                                    <select id="years" className="field__input field__select" required defaultValue="">
-                                                        <option value="" disabled>Please select</option>
-                                                    </select>
-                                                    <DownArrowIcon/>
-                                                </div>
+                                                <MainSelect
+                                                    id="questionart-product"
+                                                    //label=""
+                                                    options={[]}
+                                                    value=""
+                                                    onChange={(val) => console.log(val)}
+                                                    placeholder="Please select"
+                                                />
                                             </div>
 
                                             <div className="field questionary__group">
                                                 <p className="questionary__label">How big is your team?</p>
-                                                <div className="field__control field__control--select">
-                                                    {/* Darle funcionalidad*/}
-                                                    <select id="years" className="field__input field__select" required defaultValue="">
-                                                        <option value="" disabled>Please select</option>
-                                                    </select>
-                                                    <DownArrowIcon/>
-                                                </div>
+                                                <MainSelect
+                                                    id="questionart-team"
+                                                    //label=""
+                                                    options={[]}
+                                                    value=""
+                                                    onChange={(val) => console.log(val)}
+                                                    placeholder="Please select"
+                                                />
                                             </div>
 
                                             <div className="field questionary__group">
                                                 <p className="questionary__label">How many locations do you have?</p>
-                                                <div className="field__control field__control--select">
-                                                    {/* Darle funcionalidad*/}
-                                                    <select id="years" className="field__input field__select" required defaultValue="">
-                                                        <option value="" disabled>Please select</option>
-                                                    </select>
-                                                    <DownArrowIcon/>
-                                                </div>
+                                                <MainSelect
+                                                    id="questionart-locations"
+                                                    //label=""
+                                                    options={[]}
+                                                    value=""
+                                                    onChange={(val) => console.log(val)}
+                                                    placeholder="Please select"
+                                                />
                                             </div>
                                         </div>
                                         <button
@@ -201,13 +202,14 @@ export default function QuestionaryPage() {
                                         <div className="container__questionary">
                                             <div className="field questionary__group">
                                                 <p className="questionary__label">What is your industry?</p>
-                                                <div className="field__control field__control--select">
-                                                    {/* Darle funcionalidad*/}
-                                                    <select id="years" className="field__input field__select" required defaultValue="">
-                                                        <option value="" disabled>Please select</option>
-                                                    </select>
-                                                    <DownArrowIcon/>
-                                                </div>
+                                                <MainSelect
+                                                    id="questionart-locations"
+                                                    //label=""
+                                                    options={[]}
+                                                    value=""
+                                                    onChange={(val) => console.log(val)}
+                                                    placeholder="Please select"
+                                                />
                                             </div>
 
                                             <div className="field questionary__group">
