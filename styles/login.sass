@@ -8,7 +8,6 @@
   display: grid
   grid-template-rows: auto 1fr auto
   align-content: flex-start
-  row-gap: clamp(16px, 4vh, 40px)
   overflow: hidden
 
 .container
@@ -20,12 +19,11 @@
   display: flex
   align-items: center
   justify-content: space-between
-  margin-top: 0px
+  margin-top: 32px
   flex-wrap: wrap
 
 .login__main
-  //margin-top: clamp(56px, 12vh, 160px)
-  margin-top: 0px
+  margin-top: clamp(56px, 12vh, 160px)
   width: 100%
   display: flex
   justify-content: center
@@ -269,7 +267,7 @@
 .login__brand
   display: inline-flex
   align-items: baseline
-  margin: clamp(16px, 2vh, 24px) auto 0px
+  margin: clamp(16px, 2vh, 24px) auto 8px
   max-width: max-content
   h2
     font-size: 36px
