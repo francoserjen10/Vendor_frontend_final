@@ -6,7 +6,7 @@ import ShowPassIcon from '@/assets/images/icons/showPass.svg';
 import DoNotShowPassIcon from '@/assets/images/icons/doNotShowPass.svg';
 import { useState } from "react";
 import { Form } from "react-bootstrap";
-import DownArrowIcon from '@/assets/images/downArrow.svg';
+import MainSelect from "@/components/MainSelect";
 
 export default function SignupPage() {
     const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -95,29 +95,27 @@ export default function SignupPage() {
                                     </div>
 
                                     <div className="field">
-                                        <div className="field__control field__control--select u-shadow">
-                                            <div className="field__label">
-                                                <label htmlFor="industry">Select your industry</label>
-                                            </div>
-                                            <select id="industry" className="field__input field__select" required defaultValue="">
-                                                {/* Agregarle funcionalidad */}
-                                                <option value="">Select your industry</option>
-                                            </select>
-                                            <DownArrowIcon/>
-                                        </div>
+                                        <MainSelect
+                                            id="industry"
+                                            label="Select your industry"
+                                            options={['United States', 'Spain', 'Portugal', 'France', 'Germany']}
+                                            value=""
+                                            onChange={(val) => console.log(val)}
+                                            placeholder="Select your industry"
+                                            className="u-shadow"
+                                        />
                                     </div>
 
                                     <div className="field">
-                                        <div className="field__control field__control--select u-shadow">
-                                            <div className="field__label">
-                                                <label htmlFor="country">Select country</label>
-                                            </div>
-                                            <select id="country" className="field__input field__select" required defaultValue="">
-                                                {/* Agregarle funcionalidad */}
-                                                <option value="">Select country</option>
-                                            </select>
-                                            <DownArrowIcon/>
-                                        </div>
+                                        <MainSelect
+                                            id="country"
+                                            label="Select country"
+                                            options={['United States', 'Spain', 'Portugal', 'France', 'Germany']}
+                                            value=""
+                                            onChange={(val) => console.log(val)}
+                                            placeholder="Select country"
+                                            className="u-shadow"
+                                        />
                                     </div>
 
                                     <div className="field">
