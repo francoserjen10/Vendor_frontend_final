@@ -11,6 +11,8 @@ import React, { useState } from 'react';
 import FilterSection from '@/components/FilterSection';
 import PaginationRows from '@/components/PaginationRows';
 import SortArrows from '@/components/SortArrows';
+import { statusColor } from '@/shared/constants';
+import PaymentStatusButton from '@/components/PaymentStatusButton';
 
 export type Filters = {
     location: { pick_up: string; return: string };
@@ -296,7 +298,7 @@ export default function OrdersPage() {
                                         </td>
 
                                         <td className="col-status">
-                                            <span className="badge badge--green">Reserved</span>
+                                            <span className={`table__status ${statusColor['reserved']}`}>Reserved</span>
                                         </td>
 
                                         <td className="col-channel">Manual</td>
@@ -305,10 +307,7 @@ export default function OrdersPage() {
                                         <td className="col-return">10-03-2024 1-10:50 Denia</td>
 
                                         <td className="col-payment">
-                                            <span className="payment payment--due">
-                                                <span className="payment__dot" />
-                                                Payment due
-                                            </span>
+                                            <PaymentStatusButton status={'process_deposit'} /> {/*item.payment_status */}
                                         </td>
 
                                         <td className="col-actions">

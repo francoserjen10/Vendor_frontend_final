@@ -5,7 +5,7 @@ import ShowPassIcon from '@/assets/images/icons/showPass.svg';
 import DoNotShowPassIcon from '@/assets/images/icons/doNotShowPass.svg';
 import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
-import { passwordRegex } from "../../shared/constants";
+import { passwordRegex } from "@/shared/constants/regex";
 
 export default function ResetPasswordPage() {
     const [password, setPassword] = useState<string>('');

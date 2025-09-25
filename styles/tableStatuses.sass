@@ -1,0 +1,83 @@
+.table__status
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  padding: 6px 8px
+  border-radius: 6px
+  font-size: 12px
+  font-weight: 500
+  line-height: 1
+  white-space: nowrap
+  text-transform: capitalize
+  min-width: 0
+  background: #eee
+  color: #555
+  &.--draft
+      color: #7B7B7B
+      background: rgba(151,151,151,.20)
+  &.--returned
+      color: #03A900
+      background: rgba(3, 169, 0, .20)
+  &.--reserved
+      color: #00B69B
+      background: rgba(0, 182, 155, .20)  
+  &.--picked_up
+      color: #655AFF
+      background: rgba(101, 90, 255, .20)
+  &.--cancelled
+      color: #3E3B6D
+      background: rgba(62, 59, 109, .18)
+  &.--archived
+      color: #FFB800
+      background: rgba(255, 184, 0, .20)
+  &.--unactive
+      color: #999797
+      background: #e7e7e7
+
+.table__payment
+  display: inline-flex
+  align-items: center
+  justify-content: space-between
+  gap: 8px
+  background: transparent
+  border: 0
+  padding: 0
+  white-space: nowrap
+  color: #7B7B7B
+  &:hover
+    opacity: .9
+  .payment
+    display: inline-flex
+    align-items: center
+    gap: 6px
+  .payment__dot
+    width: 10px
+    height: 10px
+    border-radius: 9999px
+    background: currentColor
+  .payment__text
+    font-size: 14px
+    font-weight: 400
+    text-transform: capitalize
+    display: inline-block
+    color: currentColor
+  .payment__plus
+    flex: 0 0 auto
+    opacity: .8
+  
+  .payment__plus [fill]:not([fill="none"]), .payment__plus[fill]:not([fill="none"])
+    fill: currentColor !important
+  .payment__plus [stroke]:not([stroke="none"]), .payment__plus[stroke]:not([stroke="none"])
+    stroke: currentColor !important
+
+  &.--payment-due
+      color: #FF6D17
+      &:hover
+  &.--partially-paid
+      color: #00B2D9
+  &.--paid
+      color: #22BB4D
+  &.--overpaid
+      color: #2317FF
+  &.--process-deposit
+      color: #AC22BB

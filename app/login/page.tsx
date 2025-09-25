@@ -5,8 +5,8 @@ import { Form } from "react-bootstrap";
 import Image from "next/image";
 import ShowPassIcon from '@/assets/images/icons/showPass.svg';
 import DoNotShowPassIcon from '@/assets/images/icons/doNotShowPass.svg';
-import { emailRegex, passwordRegex } from "../../shared/constants";
-import { pattern, required, run } from "../../shared/validation";
+import { emailRegex, passwordRegex } from "../../shared/constants/regex";
+import { pattern, required, run } from "../../shared/constants/regex";
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
