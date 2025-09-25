@@ -16,3 +16,6 @@ export const run = (value: string, validators: Validator[]): string | null => {
     }
     return null;
 };
+
+export const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+export const passwordRegex = /^(?=.*\d)[a-zA-Z\d]{8,}$/;
